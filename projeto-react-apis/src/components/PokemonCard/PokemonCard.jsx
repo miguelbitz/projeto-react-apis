@@ -1,7 +1,11 @@
+import { PokemonCardContainer } from "./PokemonCardStyle"
+
+
 export const PokemonCard = () =>{
+
     return(
-        <div>
+        <PokemonCardContainer>
             <h1>PokemonCard</h1>
-        </div>
+        </PokemonCardContainer>
     )
 }

@@ -15,7 +15,9 @@ function App() {
       case 1:
         return (
           <>
-            <PokemonsListPage />
+            <PokemonsListPage 
+            screen={screen}
+            setScreen={setScreen}/>
           </>
         )
       case 2:
@@ -35,7 +37,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header 
+      screen={screen}
+      setScreen={setScreen}/>
       {renderList()}
     </div>
   )

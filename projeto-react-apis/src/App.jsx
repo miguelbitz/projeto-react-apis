@@ -15,7 +15,6 @@ function App() {
       case 1:
         return (
           <>
-            <Header />
             <PokemonsListPage />
           </>
         )
@@ -36,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       {renderList()}
     </div>
   )

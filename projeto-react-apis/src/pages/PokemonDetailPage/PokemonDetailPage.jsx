@@ -1,7 +1,9 @@
+import { Container } from "./PokemonDetailPageStyle"
+
 export const PokemonDetailPage = () =>{
     return(
-        <div>
+        <Container>
             <h1>PokemonDetailPage</h1>
-        </div>
+        </Container>
     )
 }

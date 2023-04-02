@@ -1,7 +1,9 @@
+import { Container } from "./PokemonsListPageStyle"
+
 export const PokemonsListPage = () =>{
     return(
-        <div>
+        <Container>
             <h1>PokemonsListPage</h1>
-        </div>
+        </Container>
     )
 }

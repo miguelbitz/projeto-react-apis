@@ -1,7 +1,9 @@
+import { Container } from "./PokedexPageStyle"
+
 export const PokedexPage = () =>{
     return(
-        <div>
+        <Container>
             <h1>PokedexPage</h1>
-        </div>
+        </Container>
     )
 }

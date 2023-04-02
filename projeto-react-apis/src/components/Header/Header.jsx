@@ -1,10 +1,12 @@
 import pokemon from '../../assets/image1.png'
-import { HeaderContainer } from './HeaderStyle'
+import { HeaderContainer, Logo, BtnHeader, AllPokemons } from './HeaderStyle'
 
-export const Header = () =>{
-    return(
+export const Header = () => {
+    return (
         <HeaderContainer>
-            <img src={pokemon} alt='logo'/>
+            <AllPokemons>Todos Pokemons</AllPokemons>
+            <Logo src={pokemon} alt='logo' />
+            <BtnHeader>Pokédex</BtnHeader>
         </HeaderContainer>
     )
 }

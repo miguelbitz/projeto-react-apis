@@ -4,6 +4,7 @@ export const Container = styled.div`
   padding: 16px;
   min-width: 25rem;
   max-width: 27.5rem;
+  max-height: 13.125rem;
   background-color: ${(props) => props.color};
   border-radius: 12px;
   display: flex;
@@ -69,8 +70,8 @@ export const CatchButton = styled.button`
 `
 
 export const Pokemon = styled.img`
-width: 193px;
-height: 193px;
+width: 12.063rem;
+height: 12.063rem;
 position: absolute;
 top: -60px;
 right: 0;

@@ -9,6 +9,7 @@ import { goToDetail } from "../../routes/coordinator";
 
 export const PokemonCard = (props) => {
     const navigate = useNavigate()
+    const [image, setImage] = useState({img: ""})
     /* const [pokemonDetail, setPokemonDetail] = useState([])
     const [img, setImg] = useState()
 
@@ -23,7 +24,6 @@ export const PokemonCard = (props) => {
             console.log(error.response);
         }
     } */
-
     const pokemonId = () => {
         if (props.pokemon.id < 10) {
             return `#0${props.pokemon.id}`
@@ -38,6 +38,10 @@ export const PokemonCard = (props) => {
 
     const buttonText = props.isInPokedex? 'Excluir' : 'Capturar!'
     const buttonAction = props.isInPokedex? props.removeFromPokedex : props.addToPokedex
+
+    useEffect(() => {
+        setImage({img: props.pokemon.sprites.other["official-artwork"].front_default});
+    }, [props.pokemon]);
 
     return (
         props.pokemon.types ? (
@@ -57,7 +61,7 @@ export const PokemonCard = (props) => {
                     <Detail onClick={() => goToDetail(navigate)}>Detalhes</Detail>
                 </div>
                 <div>
-                    <Pokemon src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.pokemon.id}.png`} alt="" />
+                    <Pokemon src={image?.img} alt="" />
                     <CatchButton onClick={() => buttonAction({ ...props.pokemon})}>{buttonText}</CatchButton>
                 </div>
                 <Pokeball src={pokeball} alt="pokeball" />

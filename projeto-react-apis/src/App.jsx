@@ -12,8 +12,6 @@ function App() {
 
   const [pokemons, setPokemons] = useState([])
   const [pokedex, setPokedex] = useState([])
-  
-
   /* const getPokemons = async () => {
     try {
       const response = await axios.get(BASE_URL, headers)
@@ -27,19 +25,19 @@ function App() {
   useEffect(() => {
     getPokemons()
   }, [])*/
-
   const getPokemons = async (ids) => {
     try {
       const promises = ids.map((id) =>
         axios.get(`${BASE_URL}/${id}`, headers),
       )
+
       const responses = await Promise.all(promises)
       const pokemonsData = responses.map((response) => response.data)
       setPokemons(pokemonsData)
     } catch (error) {
       console.log(error.response);
     }
-  };
+  }
 
   useEffect(() => {
     const ids = Array.from({ length: 20 }, (_, i) => i + 1)

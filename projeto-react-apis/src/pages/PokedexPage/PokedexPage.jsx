@@ -12,7 +12,11 @@ export const PokedexPage = (props) => {
                     <h1>Meus Pokémons</h1>
                 </Title>
                 <ContainerPokedex>
-                    {props.pokedex.map((pokemon, index) => {
+                    {props.pokedex
+                    .sort((a,b) =>{
+                        return a.id - b.id
+                    })
+                    .map((pokemon, index) => {
                         return (
                             <PokemonCard
                                 key={index}

@@ -21,7 +21,7 @@ import water from "../../assets/pokemon-types/water.png";
     switch(type) {
       case "bug":
         return bug;
-      case "Dark":
+      case "dark":
         return dark;
       case "dragon":
         return dragon;

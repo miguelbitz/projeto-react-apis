@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const ContainerListPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #5c5c5d;
+  color: white;
+`
+
+export const Title = styled.div`
+  display: block;
+  width: 100%;
+  padding: 2.5rem;
+`
+
 export const Container = styled.div`
     background-color: #5c5c5d;
     background-size: contain;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 16px;
+  padding: 1rem;
   width: 17rem;
   max-height: 13.125rem;
   background-color: ${(props) => props.color};

@@ -1,19 +1,25 @@
-import { Container } from "./PokemonsListPageStyle"
+import { Container, ContainerListPage, Title } from "./PokemonsListPageStyle"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
-import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
+
+
 
 export const PokemonsListPage = (props) => {
 
     return (
-        <Container>
-            {props.pokemons.map((pokemon, index) => {
+        <ContainerListPage>
+            <Title>
+                <h1>Todos Pokémons</h1>
+            </Title>
+            <Container>
+             {props.pokemons.map((pokemon, index) => {
                 return (
                     <PokemonCard
                         key={index}
                         pokemon={pokemon}
-                        getPokemonColors={getPokemonColors(pokemon.types[0].type.name)} />
+                        />
                 )
             })}
-        </Container>
+            </Container>
+        </ContainerListPage>
     )
 }

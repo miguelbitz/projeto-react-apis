@@ -4,26 +4,40 @@ import { PokemonsListPage } from "../pages/PokemonsListPage/PokemonsListPage";
 import { PokedexPage } from "../pages/PokedexPage/PokedexPage";
 import { PokemonDetailPage } from "../pages/PokemonDetailPage/PokemonDetailPage";
 
-export default function Router(props) {
+export default function Router({
+    addToPokedex,
+    removeFromPokedex,
+    headers,
+    pokemons,
+    pokedex,
+    BASE_URL,
+    AUTH_TOKEN,
+}) {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={
                     <PokemonsListPage
-                        headers={props.headers}
-                        pokemons={props.pokemons}
-                        BASE_URL={props.BASE_URL}
-                        AUTH_TOKEN={props.AUTH_TOKEN}/>}
+                        addToPokedex={addToPokedex}
+                        headers={headers}
+                        pokemons={pokemons}
+                        BASE_URL={BASE_URL}
+                        AUTH_TOKEN={AUTH_TOKEN} />}
                 />
                 <Route path="/pokedex" element={
                     <PokedexPage
-                        AUTH_TOKEN={props.AUTH_TOKEN}
-                        BASE_URL={props.BASE_URL} />}
+                        removeFromPokedex={removeFromPokedex}
+                        headers={headers}
+                        pokedex={pokedex}
+                        BASE_URL={BASE_URL}
+                        AUTH_TOKEN={AUTH_TOKEN} />}
                 />
                 <Route path="/pokemondetail/:id" element={
                     <PokemonDetailPage
-                        AUTH_TOKEN={props.AUTH_TOKEN}
-                        BASE_URL={props.BASE_URL} />}
+                        headers={headers}
+                        pokemons={pokemons}
+                        BASE_URL={BASE_URL}
+                        AUTH_TOKEN={AUTH_TOKEN} />}
                 />
                 <Route path="*" element={
                     <ErrorPage />}

@@ -3,25 +3,27 @@ import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 import { Header } from "../../components/Header/Header"
 
 export const PokemonsListPage = (props) => {
-
+    console.log(props.pokemons)
     return (
         <div>
             <Header />
-            <ContainerListPage>
+            <Container>
                 <Title>
                     <h1>Todos Pokémons</h1>
                 </Title>
-                <Container>
+                <ContainerListPage>
                     {props.pokemons.map((pokemon, index) => {
                         return (
                             <PokemonCard
                                 key={index}
                                 pokemon={pokemon}
+                                addToPokedex={props.addToPokedex}
+                                isInPokedex={false}
                             />
                         )
                     })}
-                </Container>
-            </ContainerListPage>
+                </ContainerListPage>
+            </Container>
         </div>
     )
 }

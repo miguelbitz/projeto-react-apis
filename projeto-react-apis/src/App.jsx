@@ -7,13 +7,11 @@ import Router from './routes/Router'
 
 function App() {
   const AUTH_TOKEN = "miguel-alves-ozemela"
-  const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
+  const BASE_URL = "https://pokeapi.co/api/v2/pokemon"
   const headers = { headers: { Authorization: AUTH_TOKEN } }
 
-  const [screen, setScreen] = useState(1)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(20)
   const [pokemons, setPokemons] = useState([])
+  const [pokedex, setPokedex] = useState([])
 
   const getPokemons = async () => {
     try {
@@ -25,6 +23,16 @@ function App() {
     }
   }
 
+  const addToPokedex = (pokemon) => {
+    setPokedex([...pokedex, pokemon])
+    setPokemons(pokemons.filter(p => p.name !== pokemon.name))
+  }
+
+  const removeFromPokedex = (pokemon) => {
+    setPokemons([...pokemons, pokemon])
+    setPokedex(pokedex.filter(p => p.name !== pokemon.name))
+  }
+
   useEffect(() => {
     getPokemons()
   }, [])
@@ -32,7 +40,10 @@ function App() {
   return (
     <div className="App">
       <Router
+        addToPokedex={addToPokedex}
+        removeFromPokedex={removeFromPokedex}
         headers={headers}
+        pokedex={pokedex}
         pokemons={pokemons}
         BASE_URL={BASE_URL}
         AUTH_TOKEN={AUTH_TOKEN} />

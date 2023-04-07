@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerListPage = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #5c5c5d;
@@ -13,7 +13,7 @@ export const Title = styled.div`
   padding: 2.5rem;
 `
 
-export const Container = styled.div`
+export const ContainerListPage = styled.div`
     background-color: #5c5c5d;
     background-size: contain;
     height: 220vh;

@@ -1,12 +1,29 @@
 import { Header } from "../../components/Header/Header"
-import { Container } from "./PokedexPageStyle"
+import { Container, ContainerPokedex, Title } from "./PokedexPageStyle"
+import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 
-export const PokedexPage = () => {
+export const PokedexPage = (props) => {
+
     return (
         <div>
             <Header />
             <Container>
-                <h1>PokedexPage</h1>
+                <Title>
+                    <h1>Meus Pokémons</h1>
+                </Title>
+                <ContainerPokedex>
+                    {props.pokedex.map((pokemon, index) => {
+                        return (
+                            <PokemonCard
+                                key={index}
+                                url={`${props.BASE_URL}/${index+1}`}
+                                pokemon={pokemon}
+                                removeFromPokedex={props.removeFromPokedex}
+                                isInPokedex={true}
+                            />
+                        )
+                    })}
+                </ContainerPokedex>
             </Container>
         </div>
 

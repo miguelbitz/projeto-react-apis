@@ -1,9 +1,19 @@
 import { Container } from "./PokemonsListPageStyle"
+import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
+import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
 
-export const PokemonsListPage = () =>{
-    return(
+export const PokemonsListPage = (props) => {
+
+    return (
         <Container>
-            <h1>PokemonsListPage</h1>
+            {props.pokemons.map((pokemon, index) => {
+                return (
+                    <PokemonCard
+                        key={index}
+                        pokemon={pokemon}
+                        getPokemonColors={getPokemonColors(pokemon.types[0].type.name)} />
+                )
+            })}
         </Container>
     )
 }

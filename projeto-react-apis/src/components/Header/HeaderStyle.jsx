@@ -46,7 +46,7 @@ export const BtnHeader = styled.button`
 @media screen and (min-width: 993px){
     width: 14vw;
     height: 3.2vw;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 `
 

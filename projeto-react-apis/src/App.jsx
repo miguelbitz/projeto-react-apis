@@ -12,7 +12,7 @@ import PaginationQuantity from './components/Pagination/Pagination'
 
 function App() {
   const AUTH_TOKEN = "miguel-alves-ozemela"
-  const BASE_URL = "https://pokeapi.co/api/v2"
+  const BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
   const [screen, setScreen] = useState(1)
   const [currentPage, setCurrentPage] = useState(1)
@@ -22,7 +22,7 @@ function App() {
   const getPokemons = async (ids) => {
     try {
       const promises = ids.map((id) =>
-        axios.get(`${BASE_URL}/pokemon/${id}`, {
+        axios.get(`${BASE_URL}${id}`, {
           headers: {
             Authorization: AUTH_TOKEN,
           },

@@ -1,18 +1,22 @@
 import pokemon from '../../assets/image1.png'
 import { HeaderContainer, Logo, BtnHeader, AllPokemons } from './HeaderStyle'
+import { useNavigate } from "react-router-dom";
+import { goToHome, goToPokedex } from '../../routes/coordinator';
 
-export const Header = (props) => {
+export const Header = () => {
+    const navigate = useNavigate()
+
     return (
         <HeaderContainer>
             <AllPokemons 
-            onClick={()=>props.setScreen(1)}>Todos Pokemons</AllPokemons>
+            onClick={()=>goToHome(navigate)}>Todos Pokemons</AllPokemons>
 
             <Logo  
             src={pokemon} 
             alt='logo' />
 
             <BtnHeader 
-            onClick={()=>props.setScreen(2)}>Pokédex</BtnHeader>
+            onClick={()=>goToPokedex(navigate)}>Pokédex</BtnHeader>
         </HeaderContainer>
     )
 }

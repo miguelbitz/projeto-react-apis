@@ -16,7 +16,6 @@ export const PokedexPage = (props) => {
                         return (
                             <PokemonCard
                                 key={index}
-                                url={`${props.BASE_URL}/${index+1}`}
                                 pokemon={pokemon}
                                 removeFromPokedex={props.removeFromPokedex}
                                 isInPokedex={true}

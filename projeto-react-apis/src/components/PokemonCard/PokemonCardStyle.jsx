@@ -57,7 +57,6 @@ export const PokemonName = styled.h1`
 `
 
 export const PokemonType = styled.img`
- 
   height: 1.4rem;
   border-radius: 8px;
   overflow: hidden;
@@ -66,10 +65,12 @@ export const PokemonType = styled.img`
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     max-width: 6.25rem;
+    height: 1.8rem;
   } 
 
   @media screen and (min-width: 993px){
     max-width: 6.25rem;
+    height: 1.8rem;
   }
 `
 
@@ -82,6 +83,7 @@ export const TypesContainer = styled.div`
 
   @media screen and (min-width: 993px){
     margin-bottom: 3.25rem;
+
   }
 `
 

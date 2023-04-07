@@ -5,10 +5,8 @@ import { useState, useEffect } from "react";
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
 import axios from "axios";
 
-
 export const PokemonCard = (props) => {
     const { name, url } = props.pokemon
-
     const [pokemon, setPokemon] = useState([])
 
     const getDetails = async () => {
@@ -36,8 +34,9 @@ export const PokemonCard = (props) => {
     const pokemonName = (name) => {
         return name.charAt(0).toUpperCase() + name.slice(1)
     }
-
+    
     return (
+        pokemon.types ? (
         <Container color={getPokemonColors(pokemon.types[0].type.name)}>
             <div>
                 <PokemonNumber>{pokemonId()}</PokemonNumber>
@@ -58,6 +57,8 @@ export const PokemonCard = (props) => {
                 <CatchButton>Capturar!</CatchButton>
             </div>
             <Pokeball src={pokeball} alt="pokeball" />
-        </Container>
+        </Container>) : (
+            <div>Loading...</div>
+        )
     );
 }

@@ -9,10 +9,9 @@ import './App.css'
 import PaginationQuantity from './components/Pagination/Pagination'
 
 
-
 function App() {
   const AUTH_TOKEN = "miguel-alves-ozemela"
-  const BASE_URL = "https://pokeapi.co/api/v2/pokemon"
+  const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
   const headers = { headers: { Authorization: AUTH_TOKEN } }
 
   const [screen, setScreen] = useState(1)

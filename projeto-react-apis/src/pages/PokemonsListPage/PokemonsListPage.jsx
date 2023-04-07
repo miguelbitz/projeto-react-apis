@@ -1,8 +1,6 @@
 import { Container, ContainerListPage, Title } from "./PokemonsListPageStyle"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 
-
-
 export const PokemonsListPage = (props) => {
 
     return (

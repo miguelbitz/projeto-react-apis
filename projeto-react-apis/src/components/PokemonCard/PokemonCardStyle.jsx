@@ -145,6 +145,7 @@ export const CatchButton = styled.button`
 `
 
 export const Pokemon = styled.img`
+  display: ${(props)=>props.imgLoad};
   height: 8rem;
   position: absolute;
   top: -60px;

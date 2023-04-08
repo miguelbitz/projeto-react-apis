@@ -9,6 +9,7 @@ import { goToDetail } from "../../routes/coordinator";
 export const PokemonCard = (props) => {
     const navigate = useNavigate()
     const [image, setImage] = useState({ img: "" })
+    const [imageLoaded, setImageLoaded] = useState(false);
     const pokemonId = () => {
         if (props.pokemon.id < 10) {
             return `#0${props.pokemon.id}`
@@ -47,10 +48,15 @@ export const PokemonCard = (props) => {
                 <Detail onClick={() => goToDetail(navigate, props.pokemon.name)}>Detalhes</Detail>
             </div>
             <div>
-                <Pokemon src={image?.img} alt="" />
-                <CatchButton 
-                color={color}
-                onClick={() => buttonAction({ ...props.pokemon })}>{buttonText}</CatchButton>
+                <Pokemon
+                    src={image?.img}
+                    alt=""
+                    onLoad={() => setImageLoaded(true)}
+                    imgLoad ={imageLoaded ? 'block' : 'none'} 
+                />
+                <CatchButton
+                    color={color}
+                    onClick={() => buttonAction({ ...props.pokemon })}>{buttonText}</CatchButton>
             </div>
             <Pokeball src={pokeball} alt="pokeball" />
         </Container>

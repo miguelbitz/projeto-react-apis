@@ -68,7 +68,7 @@ export const BackPicContainer = styled.div`
 export const BackPic = styled.img`
   height: 15rem;
 `
-export const Stats = styled.div`
+export const ContainerStats = styled.div`
   background-color: white;
   color: black;
   width: 25rem;
@@ -79,8 +79,80 @@ export const Stats = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   padding: 1rem;
-  gap: 2rem;
+  gap: 1rem;
+  z-index: 3;
 `
+
+export const Stats = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 100%;
+  margin-left: -1rem;
+`
+
+/* export const TotalStats = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+` */
+
+export const ButtonStats = styled.button`
+  background-color: orange;
+  height: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  grid-column: 4 / span 5;
+`
+
+export const ButtonStatsTotal = styled.button`
+  background-color: white;
+  height: 1rem;
+  width: 12rem;
+  border: none;
+  grid-column: 4 / span 5
+`
+
+/* export const DivStatsName = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .5rem;
+` */
+
+export const StatsName = styled.p`
+  grid-column: 1 / span 2;
+  justify-self: end;
+  font-weight: 400;
+`
+/* export const DivStatsNumber = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: .5rem;
+` */
+export const Number = styled.div`
+  justify-self: end;
+  font-weight: 600;
+`
+
+/* export const DivStats = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: .5rem;
+` */
+export const DivStats = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  gap: .5rem;
+`
+
 export const Infos = styled.div`
   display: flex;
   flex-direction: column;
@@ -206,3 +278,5 @@ export const Pokemon = styled.img`
     height: 16rem;
   }
 `
+
+

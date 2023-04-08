@@ -1,4 +1,4 @@
-import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, Moves, FrontPicContainer, BackPicContainer } from "./PokemonDetailPageStyle"
+import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, Moves, FrontPicContainer, BackPicContainer, ButtonStats, DivStats, Number, ContainerStats, StatsName, ButtonStatsTotal } from "./PokemonDetailPageStyle"
 import pokeball from '../../assets/pngwing 3.png'
 import { getPokemonTypes } from '../../components/PokemonTypes/PokemonTypes'
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
@@ -60,15 +60,55 @@ export const PokemonDetailPage = (props) => {
                             <FrontPic src={imageFront?.img} alt="front" />
                         </FrontPicContainer>
                         <BackPicContainer>
-                        <BackPic src={imageBack?.img} alt="back" />
+                            <BackPic src={imageBack?.img} alt="back" />
                         </BackPicContainer>
                     </Pictures>
-                    <Stats>
+                    <ContainerStats>
                         <h2>Base Stats</h2>
-                        <div>
-                            <p>HP</p>
-                        </div>
-                    </Stats>
+                        <Stats>
+                            <DivStats>
+                                <StatsName>HP</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Attack</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Defense</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Sp. Atk</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Sp. Def</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Sp. Def</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Speed</StatsName>
+                                <Number>45</Number>
+                                <ButtonStats />
+                            </DivStats>
+                            <DivStats>
+                                <StatsName>Total</StatsName>
+                                <Number>318</Number>
+                                <ButtonStatsTotal />
+                            </DivStats>
+                        </Stats>
+
+                    </ContainerStats>
                     <Infos>
                         <InfoPokemon>
                             <PokemonNumber>{pokemonId()}</PokemonNumber>
@@ -90,6 +130,6 @@ export const PokemonDetailPage = (props) => {
                     <Pokeball src={pokeball} alt="pokeball" />
                 </ContainerDetail>
             </Container>
-        </div>
+        </div >
     )
 } 

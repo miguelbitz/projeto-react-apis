@@ -7,7 +7,7 @@ import Router from './routes/Router'
 
 function App() {
   const AUTH_TOKEN = "miguel-alves-ozemela"
-  const BASE_URL = "https://pokeapi.co/api/v2/pokemon/?limit=50"
+  const BASE_URL = "https://pokeapi.co/api/v2"
   const headers = { headers: { Authorization: AUTH_TOKEN } }
 
   const [pokemonsUrl, setPokemonsUrl] = useState([])
@@ -16,7 +16,7 @@ function App() {
 
   const getPokemonsUrl = async () => {
     try {
-      const response = await axios.get(BASE_URL, headers)
+      const response = await axios.get(`${BASE_URL}/pokemon/?limit=20`, headers)
       setPokemonsUrl(response.data.results)
     }
     catch (error) {

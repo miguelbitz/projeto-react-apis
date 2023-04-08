@@ -15,7 +15,31 @@ export const PokemonDetailPage = (props) => {
     const { name } = useParams()
     const [pokemon, setPokemon] = useState([])
 
-    const findPokemon = () => props.pokemons.find((pokemon) => pokemon.name === name)
+    const loadPokemonData = async (name) => {
+        try {
+            const response = await axios.get(`${props.BASE_URL}/pokemon/${name}`);
+            return response.data;
+        } catch (error) {
+            console.error(error.response);
+        }
+    };
+
+    useEffect(() => {
+        const getPokemonData = async () => {
+            const pokemonData = await loadPokemonData(name);
+            setPokemon(pokemonData);
+        };
+
+        getPokemonData()
+    }, [name])
+
+    useEffect(() => {
+        if (pokemon && pokemon.sprites && pokemon.sprites.other) {
+            setImage({ img: pokemon.sprites.other["official-artwork"].front_default })
+            setImageFront({ img: pokemon.sprites.front_default })
+            setImageBack({ img: pokemon.sprites.back_default })
+        }
+    }, [pokemon]);
 
     const pokemonId = () => {
         if (pokemon) {
@@ -31,18 +55,6 @@ export const PokemonDetailPage = (props) => {
         return name.charAt(0).toUpperCase() + name.slice(1)
     }
 
-    useEffect(() => {
-        setPokemon(findPokemon())
-    }, [props.pokemons])
-
-    useEffect(() => {
-        if (pokemon && pokemon.sprites && pokemon.sprites.other) {
-            setImage({ img: pokemon.sprites.other["official-artwork"].front_default })
-            setImageFront({ img: pokemon.sprites.front_default })
-            setImageBack({ img: pokemon.sprites.back_default })
-        }
-    }, [pokemon]);
-
     const health = pokemon && pokemon.stats ? pokemon.stats[0].base_stat : ''
     const attack = pokemon && pokemon.stats ? pokemon.stats[1].base_stat : ''
     const defense = pokemon && pokemon.stats ? pokemon.stats[2].base_stat : ''
@@ -55,12 +67,20 @@ export const PokemonDetailPage = (props) => {
     const colorStats = (value) => {
         if (value <= 20) {
             return '#ff0000'
-        } else if (value > 20 && value<=50) {
+        } else if (value > 20 && value <= 50) {
             return '#ff4800'
-        } else if (value > 50 && value<=80) {
+        } else if (value > 50 && value <= 80) {
             return '#ffd000'
-        }else {
+        } else {
             return '#2ca50e'
+        }
+    }
+
+    const widthStats = (value) =>{
+        if(value > 100){
+            return value = 100
+        }else{
+            return value
         }
     }
 
@@ -91,42 +111,42 @@ export const PokemonDetailPage = (props) => {
                                 <Number>{health}</Number>
                                 <ButtonStats
                                     color={colorStats(health)}
-                                    width={health} />
+                                    width={widthStats(health)} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Attack</StatsName>
                                 <Number>{attack}</Number>
                                 <ButtonStats
                                     color={colorStats(attack)}
-                                    width={attack} />
+                                    width={widthStats(attack)} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Defense</StatsName>
                                 <Number>{defense}</Number>
                                 <ButtonStats
                                     color={colorStats(defense)}
-                                    width={defense} />
+                                    width={widthStats(defense)} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Sp. Atk</StatsName>
                                 <Number>{spAtk}</Number>
                                 <ButtonStats
                                     color={colorStats(spAtk)}
-                                    width={spAtk} />
+                                    width={widthStats(spAtk)} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Sp. Def</StatsName>
                                 <Number>{spDef}</Number>
                                 <ButtonStats
                                     color={colorStats(spDef)}
-                                    width={spDef} />
+                                    width={widthStats(spDef)} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Speed</StatsName>
                                 <Number>{speed}</Number>
                                 <ButtonStats
                                     color={colorStats(speed)}
-                                    width={speed} />
+                                    width={widthStats(speed)} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Total</StatsName>

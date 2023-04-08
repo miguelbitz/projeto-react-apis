@@ -123,7 +123,7 @@ export const CatchButton = styled.button`
   padding: 4px 10px;
   width: 100px;
   height: 30px;
-  background: #ffffff;
+  background-color: ${(props)=> props.color};
   border-radius: 8px;
   border: none;
   cursor: pointer;

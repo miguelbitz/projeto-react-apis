@@ -18,7 +18,6 @@ export const PokemonsListPage = (props) => {
                     .map((pokemon, index) => {
                         return (
                             <PokemonCard
-                                getPokemons={props.getPokemons}
                                 key={index}
                                 pokemon={pokemon}
                                 addToPokedex={props.addToPokedex}

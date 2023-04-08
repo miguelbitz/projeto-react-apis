@@ -12,7 +12,6 @@ export default function Router({
     pokedex,
     BASE_URL,
     AUTH_TOKEN,
-    getPokemons
 
 }) {
     return (
@@ -20,7 +19,6 @@ export default function Router({
             <Routes>
                 <Route path="/" element={
                     <PokemonsListPage
-                        getPokemons={getPokemons}
                         addToPokedex={addToPokedex}
                         headers={headers}
                         pokemons={pokemons}

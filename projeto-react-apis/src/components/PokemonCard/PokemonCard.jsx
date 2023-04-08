@@ -9,20 +9,6 @@ import { goToDetail } from "../../routes/coordinator";
 export const PokemonCard = (props) => {
     const navigate = useNavigate()
     const [image, setImage] = useState({ img: "" })
-    /* const [pokemonDetail, setPokemonDetail] = useState([])
-    const [img, setImg] = useState()
-
-    const getDetails = async () => {
-        try {
-            const response = await axios.get(props.url || props.pokemon.url)
-            console.log(response.data)
-            setPokemonDetail(response.data)
-            setImg(response.data.sprites.other["official-artwork"].front_default)
-        }
-        catch (error) {
-            console.log(error.response);
-        }
-    } */
     const pokemonId = () => {
         if (props.pokemon.id < 10) {
             return `#0${props.pokemon.id}`
@@ -37,6 +23,8 @@ export const PokemonCard = (props) => {
 
     const buttonText = props.isInPokedex ? 'Excluir' : 'Capturar!'
     const buttonAction = props.isInPokedex ? props.removeFromPokedex : props.addToPokedex
+
+    const color = props.isInPokedex ? '#FF6262' : '#ffffff'
 
     useEffect(() => {
         setImage({ img: props.pokemon.sprites.other["official-artwork"].front_default });
@@ -60,7 +48,9 @@ export const PokemonCard = (props) => {
             </div>
             <div>
                 <Pokemon src={image?.img} alt="" />
-                <CatchButton onClick={() => buttonAction({ ...props.pokemon })}>{buttonText}</CatchButton>
+                <CatchButton 
+                color={color}
+                onClick={() => buttonAction({ ...props.pokemon })}>{buttonText}</CatchButton>
             </div>
             <Pokeball src={pokeball} alt="pokeball" />
         </Container>

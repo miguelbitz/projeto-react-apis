@@ -16,7 +16,7 @@ function App() {
 
   const getPokemonsUrl = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/pokemon/?limit=20`, headers)
+      const response = await axios.get(`${BASE_URL}/pokemon/?limit=151`, headers)
       setPokemonsUrl(response.data.results)
     }
     catch (error) {
@@ -34,6 +34,16 @@ function App() {
     }
   }
 
+  const addToPokedex = (pokemon) => {
+    setPokedex([...pokedex, pokemon])
+    setPokemons(pokemons.filter(p => p.name !== pokemon.name))
+  }
+
+  const removeFromPokedex = (pokemon) => {
+    setPokemons([...pokemons, pokemon])
+    setPokedex(pokedex.filter(p => p.name !== pokemon.name))
+  }
+
   useEffect(() => {
     const loadPokemonsData = async () => {
       await getPokemonsUrl()
@@ -48,39 +58,9 @@ function App() {
     }
   }, [pokemonsUrl])
 
-  /* const getPokemons = async (ids) => {
-    try {
-      const promises = ids.map((id) =>
-        axios.get(`${BASE_URL}/${id}`, headers),
-      )
-
-      const responses = await Promise.all(promises)
-      const pokemonsData = responses.map((response) => response.data)
-      setPokemons(pokemonsData)
-      console.log(pokemonsData)
-    } catch (error) {
-      console.log(error.response);
-    }
-  }
-
-  useEffect(() => {
-    const ids = Array.from({ length: 20 }, (_, i) => i + 1)
-    getPokemons(ids)
-  }, []) */
-  const addToPokedex = (pokemon) => {
-    setPokedex([...pokedex, pokemon])
-    setPokemons(pokemons.filter(p => p.name !== pokemon.name))
-  }
-
-  const removeFromPokedex = (pokemon) => {
-    setPokemons([...pokemons, pokemon])
-    setPokedex(pokedex.filter(p => p.name !== pokemon.name))
-  }
-
   return (
     <div className="App">
       <Router
-        getPokemons={getPokemons}
         addToPokedex={addToPokedex}
         removeFromPokedex={removeFromPokedex}
         headers={headers}

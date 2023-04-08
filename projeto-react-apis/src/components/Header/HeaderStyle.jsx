@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     background-color: white;
-    justify-content: space-around;
+    justify-items: center;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    height: 8rem;
 
     @media screen and (min-width: 600px) and (max-width: 992px){
         gap: 0;
@@ -16,6 +16,7 @@ export const HeaderContainer = styled.div`
         gap: 0;
     }
 `
+
 
 export const Logo = styled.img`
     width: 40vw;
@@ -53,6 +54,7 @@ export const BtnHeader = styled.button`
 export const AllPokemons = styled.p`
     font-size: 0.8rem;
     font-weight: 800;
+
 
 @media screen and (min-width: 600px) and (max-width: 992px){
     font-size: 1.2rem;

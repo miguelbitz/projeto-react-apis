@@ -90,21 +90,14 @@ export const Stats = styled.div`
   width: 100%;
   margin-left: -1rem;
 `
-
-/* export const TotalStats = styled.div`
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  justify-content: center;
-` */
-
 export const ButtonStats = styled.button`
-  background-color: orange;
+  background-color: ${(props) => props.color};
   height: 1rem;
-  width: 100%;
+  width: ${(props) => props.width}%;
   border: none;
   border-radius: 10px;
   grid-column: 4 / span 5;
+  align-items: center;
 `
 
 export const ButtonStatsTotal = styled.button`
@@ -115,42 +108,23 @@ export const ButtonStatsTotal = styled.button`
   grid-column: 4 / span 5
 `
 
-/* export const DivStatsName = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: .5rem;
-` */
-
 export const StatsName = styled.p`
   grid-column: 1 / span 2;
   justify-self: end;
   font-weight: 400;
 `
-/* export const DivStatsNumber = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: .5rem;
-` */
+
 export const Number = styled.div`
   justify-self: end;
   font-weight: 600;
 `
 
-/* export const DivStats = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  gap: .5rem;
-` */
 export const DivStats = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
   gap: .5rem;
+  align-items: center;
 `
 
 export const Infos = styled.div`

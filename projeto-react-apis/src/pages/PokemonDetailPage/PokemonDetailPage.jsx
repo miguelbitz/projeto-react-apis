@@ -43,7 +43,27 @@ export const PokemonDetailPage = (props) => {
         }
     }, [pokemon]);
 
-    console.log(pokemon)
+    const health = pokemon && pokemon.stats ? pokemon.stats[0].base_stat : ''
+    const attack = pokemon && pokemon.stats ? pokemon.stats[1].base_stat : ''
+    const defense = pokemon && pokemon.stats ? pokemon.stats[2].base_stat : ''
+    const spAtk = pokemon && pokemon.stats ? pokemon.stats[3].base_stat : ''
+    const spDef = pokemon && pokemon.stats ? pokemon.stats[4].base_stat : ''
+    const speed = pokemon && pokemon.stats ? pokemon.stats[5].base_stat : ''
+
+    const total = health + attack + defense + spAtk + spDef + speed
+
+    const colorStats = (value) => {
+        if (value <= 20) {
+            return '#ff0000'
+        } else if (value > 20 && value<=50) {
+            return '#ff4800'
+        } else if (value > 50 && value<=80) {
+            return '#ffd000'
+        }else {
+            return '#2ca50e'
+        }
+    }
+
     return (
         <div>
             <Header />
@@ -68,42 +88,49 @@ export const PokemonDetailPage = (props) => {
                         <Stats>
                             <DivStats>
                                 <StatsName>HP</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
+                                <Number>{health}</Number>
+                                <ButtonStats
+                                    color={colorStats(health)}
+                                    width={health} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Attack</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
+                                <Number>{attack}</Number>
+                                <ButtonStats
+                                    color={colorStats(attack)}
+                                    width={attack} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Defense</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
+                                <Number>{defense}</Number>
+                                <ButtonStats
+                                    color={colorStats(defense)}
+                                    width={defense} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Sp. Atk</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
+                                <Number>{spAtk}</Number>
+                                <ButtonStats
+                                    color={colorStats(spAtk)}
+                                    width={spAtk} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Sp. Def</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
-                            </DivStats>
-                            <DivStats>
-                                <StatsName>Sp. Def</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
+                                <Number>{spDef}</Number>
+                                <ButtonStats
+                                    color={colorStats(spDef)}
+                                    width={spDef} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Speed</StatsName>
-                                <Number>45</Number>
-                                <ButtonStats />
+                                <Number>{speed}</Number>
+                                <ButtonStats
+                                    color={colorStats(speed)}
+                                    width={speed} />
                             </DivStats>
                             <DivStats>
                                 <StatsName>Total</StatsName>
-                                <Number>318</Number>
+                                <Number>{total}</Number>
                                 <ButtonStatsTotal />
                             </DivStats>
                         </Stats>

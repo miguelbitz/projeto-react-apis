@@ -16,7 +16,7 @@ export const Title = styled.div`
 export const ContainerPokedex = styled.div`
     background-color: #5c5c5d;
     background-size: contain;
-    height: 220vh;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;;
     justify-items: center;

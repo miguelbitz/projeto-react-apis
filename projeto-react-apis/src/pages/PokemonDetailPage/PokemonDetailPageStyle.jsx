@@ -3,41 +3,119 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #5c5c5d;
   color: white;
+  height: 100vh;
 `
 
 export const Title = styled.div`
-  display: block;
   width: 100%;
   padding: 2.5rem;
+  padding-left: 8.5rem;
 `
 
 export const ContainerDetail = styled.div`
-  padding: 1rem;
-  width: 17rem;
-  max-height: 13.125rem;
   background-color: ${(props) => props.color};
-  border-radius: 12px;
+  background-size: contain;
   display: flex;
+  align-items: center;
+  height: 75vh;
+  width: 85vw;
+  border-radius: 37px;
   position: relative;
-  margin: 3.125rem;
-  color: #ffffff;
+  z-index: 1;
+  padding: 0 2rem;
+  gap: 3.5rem;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-    min-width: 25rem;
-    max-width: 27.5rem;
-    max-height: 13.125rem;
+
   }
 
   @media screen and (min-width: 993px){
-    min-width: 25rem;
-    max-width: 27.5rem;
-    max-height: 13.125rem;
 
   }
 `
+export const Pictures = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 3rem;
+`
+export const FrontPicContainer = styled.div`
+  background-color: white;
+  color: black;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+export const FrontPic = styled.img`
+  height: 15rem;
+`
+export const BackPicContainer = styled.div`
+  background-color: white;
+  color: black;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+export const BackPic = styled.img`
+  height: 15rem;
+`
+export const Stats = styled.div`
+  background-color: white;
+  color: black;
+  width: 25rem;
+  height: 39rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+  gap: 2rem;
+`
+export const Infos = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  z-index: 3;
+`
+export const InfoPokemon = styled.div`
+  z-index: 3;
+`
+export const Moves = styled.div`
+  background-color: white;
+  color: black;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+  z-index: 3;
+`
+export const PokeballDetail = styled.img`
+  position: absolute;
+  height: 9rem;
+  margin-left: -14rem;
 
+
+  @media screen and (min-width: 600px) and (max-width: 992px){
+    height: 12rem;
+  }
+
+  @media screen and (min-width: 993px){
+    height: 52rem;
+  }
+`
 export const PokemonNumber = styled.p`
   font-size: 13px;
   font-family: 'Inter', sans-serif;
@@ -52,7 +130,6 @@ export const PokemonNumber = styled.p`
     font-size: 1rem;
   }
 `
-
 export const PokemonName = styled.h1`
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
@@ -68,7 +145,6 @@ export const PokemonName = styled.h1`
     font-size: 2rem;
   }
 `
-
 export const PokemonType = styled.img`
   height: 1.4rem;
   border-radius: 8px;
@@ -86,9 +162,7 @@ export const PokemonType = styled.img`
     height: 1.8rem;
   }
 `
-
 export const TypesContainer = styled.div`
-
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     margin-bottom: 3.25rem;
@@ -99,70 +173,27 @@ export const TypesContainer = styled.div`
 
   }
 `
-
 export const Pokeball = styled.img`
   position: absolute;
   top: 0;
   right: 0;
   height: 9rem;
-
-  @media screen and (min-width: 600px) and (max-width: 992px){
-    height: 12rem;
-  }
-
-  @media screen and (min-width: 993px){
-    height: 12rem;
-  }
-`
-
-export const Detail = styled.p`
-  text-decoration: underline;
-  font-size: 14px;
-
-  @media screen and (min-width: 600px) and (max-width: 992px){
-    font-size: 1rem;
-  }
-
-  @media screen and (min-width: 993px){
-    font-size: 1.2rem;
-  }
-`
-
-export const CatchButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 10px;
-  width: 100px;
-  height: 30px;
-  background: #ffffff;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 10px;
-  right: 22px;
   z-index: 2;
-  color: #000;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-    width: 9.125rem;
-    height: 2.375rem;
+    height: 12rem;
   }
 
   @media screen and (min-width: 993px){
-    width: 9.125rem;
-    height: 2.375rem;
+    height: 100%;
   }
 `
-
 export const Pokemon = styled.img`
   height: 8rem;
   position: absolute;
-  top: -60px;
-  right: 0;
-  z-index: 2;
+  top: -3.125rem;
+  right: 2rem;
+  z-index: 3;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     width: 12.063rem;
@@ -170,7 +201,8 @@ export const Pokemon = styled.img`
   }
 
   @media screen and (min-width: 993px){
-    width: 12.063rem;
-    height: 12.063rem;
+    top: -5rem;
+    width: 16rem;
+    height: 16rem;
   }
 `

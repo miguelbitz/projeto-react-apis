@@ -35,7 +35,7 @@ export default function Router({
                         BASE_URL={BASE_URL}
                         AUTH_TOKEN={AUTH_TOKEN} />}
                 />
-                <Route path="/pokemondetail/:id" element={
+                <Route path="/pokemondetail/:name" element={
                     <PokemonDetailPage
                         headers={headers}
                         pokemons={pokemons}

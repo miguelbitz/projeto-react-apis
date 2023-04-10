@@ -14,6 +14,10 @@ export const PokemonDetailPage = (props) => {
     const [imageBack, setImageBack] = useState({ img: "" })
     const { name } = useParams()
     const [pokemon, setPokemon] = useState([])
+    const [loadImg, setLoadImg] = useState(false)
+    const [loadImgFront, setLoadImgFront] = useState(false)
+    const [loadImgBack, setLoadImgBack] = useState(false)
+    const [stats, setStats] = useState([])
 
     const loadPokemonData = async (name) => {
         try {
@@ -65,14 +69,16 @@ export const PokemonDetailPage = (props) => {
     const total = health + attack + defense + spAtk + spDef + speed
 
     const colorStats = (value) => {
-        if (value <= 20) {
+        if (value > 0 &&value <= 20) {
             return '#ff0000'
         } else if (value > 20 && value <= 50) {
             return '#ff4800'
         } else if (value > 50 && value <= 80) {
             return '#ffd000'
-        } else {
+        } else if(value > 80){
             return '#2ca50e'
+        }else{
+            return ""
         }
     }
 
@@ -97,10 +103,17 @@ export const PokemonDetailPage = (props) => {
                 <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
                     <Pictures>
                         <FrontPicContainer>
-                            <FrontPic src={imageFront?.img} alt="front" />
+                            <FrontPic 
+                            onLoad={() => setLoadImgFront(true)} 
+                            imgLoad ={loadImgFront ? 'block' : 'none'}
+                            src={imageFront?.img} alt="" />
                         </FrontPicContainer>
                         <BackPicContainer>
-                            <BackPic src={imageBack?.img} alt="back" />
+                            <BackPic 
+                            onLoad={() => setLoadImgBack(true)}
+                            imgLoad ={loadImgBack ? 'block' : 'none'} 
+                            src={imageBack?.img} 
+                            alt="" />
                         </BackPicContainer>
                     </Pictures>
                     <ContainerStats>
@@ -173,7 +186,11 @@ export const PokemonDetailPage = (props) => {
                             <h2>Moves</h2>
                         </Moves>
                     </Infos>
-                    <Pokemon src={image?.img} alt="img" />
+                    <Pokemon 
+                    onLoad={() => setLoadImg(true)} 
+                    imgLoad ={loadImg ? 'block' : 'none'}
+                    src={image?.img} 
+                    alt="" />
                     <Pokeball src={pokeball} alt="pokeball" />
                 </ContainerDetail>
             </Container>

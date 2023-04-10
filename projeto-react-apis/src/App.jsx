@@ -16,7 +16,7 @@ function App() {
 
   const getPokemonsUrl = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/pokemon/?limit=151`, headers)
+      const response = await axios.get(`${BASE_URL}/pokemon/?limit=151`)
       setPokemonsUrl(response.data.results)
     }
     catch (error) {
@@ -26,7 +26,7 @@ function App() {
 
   const getPokemons = async (url) => {
     try {
-      const promises = url.map((url) => axios.get(url, headers),)
+      const promises = url.map((url) => axios.get(url))
       const responses = await Promise.all(promises)
       setPokemons(responses.map((response) => response.data))
     } catch (error) {

@@ -16,7 +16,8 @@ export const Title = styled.div`
 export const ContainerListPage = styled.div`
     background-color: #5c5c5d;
     background-size: contain;
-    height: 220vh;
+    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-wrap: wrap;;
     justify-items: center;

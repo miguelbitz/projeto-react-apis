@@ -54,6 +54,7 @@ export const FrontPicContainer = styled.div`
 `
 export const FrontPic = styled.img`
   height: 15rem;
+  display: ${(props)=>props.imgLoad};
 `
 export const BackPicContainer = styled.div`
   background-color: white;
@@ -67,6 +68,7 @@ export const BackPicContainer = styled.div`
 `
 export const BackPic = styled.img`
   height: 15rem;
+  display: ${(props)=>props.imgLoad};
 `
 export const ContainerStats = styled.div`
   background-color: white;
@@ -240,6 +242,7 @@ export const Pokemon = styled.img`
   top: -3.125rem;
   right: 2rem;
   z-index: 3;
+  display: ${(props)=>props.imgLoad};
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     width: 12.063rem;

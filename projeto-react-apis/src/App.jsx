@@ -1,89 +1,73 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Header } from './components/Header/Header'
-import { PokedexPage } from './pages/PokedexPage/PokedexPage'
-import { PokemonsListPage } from './pages/PokemonsListPage/PokemonsListPage'
-import { PokemonDetailPage } from './pages/PokemonDetailPage/PokemonDetailPage'
 import './App.css'
-import PaginationQuantity from './components/Pagination/Pagination'
-
+import Router from './routes/Router'
 
 
 function App() {
   const AUTH_TOKEN = "miguel-alves-ozemela"
-  const BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
+  const BASE_URL = "https://pokeapi.co/api/v2"
+  const headers = { headers: { Authorization: AUTH_TOKEN } }
 
-  const [screen, setScreen] = useState(1)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(20)
+  const [pokemonsUrl, setPokemonsUrl] = useState([])
   const [pokemons, setPokemons] = useState([])
+  const [pokedex, setPokedex] = useState([])
 
-  const getPokemons = async (ids) => {
+  const getPokemonsUrl = async () => {
     try {
-      const promises = ids.map((id) =>
-        axios.get(`${BASE_URL}${id}`, {
-          headers: {
-            Authorization: AUTH_TOKEN,
-          },
-        }),
-      )
-
-      const responses = await Promise.all(promises)
-      const pokemonsData = responses.map((response) => response.data);
-      setPokemons(pokemonsData);
-    } catch (error) {
-      console.log(error.response);
+      const response = await axios.get(`${BASE_URL}/pokemon/?limit=151`)
+      setPokemonsUrl(response.data.results)
     }
+    catch (error) {
+      console.log(error.response)
+    }
+  }
+
+  const getPokemons = async (url) => {
+    try {
+      const promises = url.map((url) => axios.get(url))
+      const responses = await Promise.all(promises)
+      setPokemons(responses.map((response) => response.data))
+    } catch (error) {
+      console.log(error.response)
+    }
+  }
+
+  const addToPokedex = (pokemon) => {
+    setPokedex([...pokedex, pokemon])
+    setPokemons(pokemons.filter(p => p.name !== pokemon.name))
+  }
+
+  const removeFromPokedex = (pokemon) => {
+    setPokemons([...pokemons, pokemon])
+    setPokedex(pokedex.filter(p => p.name !== pokemon.name))
   }
 
   useEffect(() => {
-    const ids = Array.from({ length: 151 }, (_, i) => i + 1)
-    getPokemons(ids)
+    const loadPokemonsData = async () => {
+      await getPokemonsUrl()
+    }
+    loadPokemonsData()
   }, [])
 
-
-
-  const renderList = () => {
-    switch (screen) {
-      case 1:
-        return (
-          <>
-            <PokemonsListPage
-              pokemons={pokemons}
-              BASE_URL={BASE_URL}
-              AUTH_TOKEN={AUTH_TOKEN}
-              screen={screen}
-              setScreen={setScreen} />
-              <PaginationQuantity
-              totalPosts={pokemons.length}/>
-          </>
-        )
-      case 2:
-        return (
-          <>
-            <PokedexPage
-              AUTH_TOKEN={AUTH_TOKEN}
-              BASE_URL={BASE_URL} />
-          </>
-        )
-      case 3:
-        return (
-          <>
-            <PokemonDetailPage
-              AUTH_TOKEN={AUTH_TOKEN}
-              BASE_URL={BASE_URL} />
-          </>
-        )
+  useEffect(() => {
+    if (pokemonsUrl.length > 0) {
+      const urlList = pokemonsUrl.map((pokemon) => pokemon.url)
+      getPokemons(urlList)
     }
-  }
+  }, [pokemonsUrl])
 
   return (
     <div className="App">
-      <Header
-        screen={screen}
-        setScreen={setScreen} />
-      {renderList()}
+      <Router
+        addToPokedex={addToPokedex}
+        removeFromPokedex={removeFromPokedex}
+        headers={headers}
+        pokedex={pokedex}
+        pokemons={pokemons}
+        BASE_URL={BASE_URL}
+        AUTH_TOKEN={AUTH_TOKEN} />
     </div>
   )
 }

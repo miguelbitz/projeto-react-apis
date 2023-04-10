@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 16px;
+  padding: 1rem;
   width: 17rem;
   max-height: 13.125rem;
   background-color: ${(props) => props.color};
@@ -123,7 +123,7 @@ export const CatchButton = styled.button`
   padding: 4px 10px;
   width: 100px;
   height: 30px;
-  background: #ffffff;
+  background-color: ${(props)=> props.color};
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -145,6 +145,7 @@ export const CatchButton = styled.button`
 `
 
 export const Pokemon = styled.img`
+  display: ${(props)=>props.imgLoad};
   height: 8rem;
   position: absolute;
   top: -60px;

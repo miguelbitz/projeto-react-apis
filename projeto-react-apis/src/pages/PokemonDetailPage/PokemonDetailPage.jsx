@@ -1,4 +1,4 @@
-import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, Moves, FrontPicContainer, BackPicContainer, ButtonStats, DivStats, Number, ContainerStats, StatsName, ButtonStatsTotal } from "./PokemonDetailPageStyle"
+import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, Moves, FrontPicContainer, BackPicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
 import pokeball from '../../assets/pngwing 3.png'
 import { getPokemonTypes } from '../../components/PokemonTypes/PokemonTypes'
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import axios from "axios";
+import { StatRow } from "../../components/StatRow/StatRow";
 
 export const PokemonDetailPage = (props) => {
 
@@ -17,7 +18,6 @@ export const PokemonDetailPage = (props) => {
     const [loadImg, setLoadImg] = useState(false)
     const [loadImgFront, setLoadImgFront] = useState(false)
     const [loadImgBack, setLoadImgBack] = useState(false)
-    const [stats, setStats] = useState([])
 
     const loadPokemonData = async (name) => {
         try {
@@ -59,44 +59,18 @@ export const PokemonDetailPage = (props) => {
         return name.charAt(0).toUpperCase() + name.slice(1)
     }
 
-    const health = pokemon && pokemon.stats ? pokemon.stats[0].base_stat : ''
-    const attack = pokemon && pokemon.stats ? pokemon.stats[1].base_stat : ''
-    const defense = pokemon && pokemon.stats ? pokemon.stats[2].base_stat : ''
-    const spAtk = pokemon && pokemon.stats ? pokemon.stats[3].base_stat : ''
-    const spDef = pokemon && pokemon.stats ? pokemon.stats[4].base_stat : ''
-    const speed = pokemon && pokemon.stats ? pokemon.stats[5].base_stat : ''
+    const getStatValue = (stats, index) => {
+        return pokemon && stats ? stats[index].base_stat : '';
+    };
+
+    const health = getStatValue(pokemon.stats, 0);
+    const attack = getStatValue(pokemon.stats, 1);
+    const defense = getStatValue(pokemon.stats, 2);
+    const spAtk = getStatValue(pokemon.stats, 3);
+    const spDef = getStatValue(pokemon.stats, 4);
+    const speed = getStatValue(pokemon.stats, 5);
 
     const total = health + attack + defense + spAtk + spDef + speed
-
-    /*    const stats = pokemon && pokemon.stats
-           ? pokemon.stats.map((stat) => stat.base_stat)
-           : Array(6).fill('');
-   
-       const [health, attack, defense, spAtk, spDef, speed] = stats;
-   
-       const total = stats.reduce((acc, statValue) => acc + statValue, 0); */
-
-    const colorStats = (value) => {
-        if (value > 0 && value <= 20) {
-            return '#ff0000'
-        } else if (value > 20 && value <= 50) {
-            return '#ff4800'
-        } else if (value > 50 && value <= 80) {
-            return '#ffd000'
-        } else if (value > 80) {
-            return '#2ca50e'
-        } else {
-            return ""
-        }
-    }
-
-    const widthStats = (value) => {
-        if (value > 100) {
-            return value = 100
-        } else {
-            return value
-        }
-    }
 
     const isInPokedex = () => {
         const findPokemonBoolean = props.pokedex.find((poke) => {
@@ -114,7 +88,7 @@ export const PokemonDetailPage = (props) => {
                 }
             })
             return findPokemon
-        }else{
+        } else {
             const findPokemon = props.pokedex.find((poke) => {
                 if (poke.name === pokemon.name) {
                     return poke
@@ -158,48 +132,12 @@ export const PokemonDetailPage = (props) => {
                     <ContainerStats>
                         <h2>Base Stats</h2>
                         <Stats>
-                            <DivStats>
-                                <StatsName>HP</StatsName>
-                                <Number>{health}</Number>
-                                <ButtonStats
-                                    color={colorStats(health)}
-                                    width={widthStats(health)} />
-                            </DivStats>
-                            <DivStats>
-                                <StatsName>Attack</StatsName>
-                                <Number>{attack}</Number>
-                                <ButtonStats
-                                    color={colorStats(attack)}
-                                    width={widthStats(attack)} />
-                            </DivStats>
-                            <DivStats>
-                                <StatsName>Defense</StatsName>
-                                <Number>{defense}</Number>
-                                <ButtonStats
-                                    color={colorStats(defense)}
-                                    width={widthStats(defense)} />
-                            </DivStats>
-                            <DivStats>
-                                <StatsName>Sp. Atk</StatsName>
-                                <Number>{spAtk}</Number>
-                                <ButtonStats
-                                    color={colorStats(spAtk)}
-                                    width={widthStats(spAtk)} />
-                            </DivStats>
-                            <DivStats>
-                                <StatsName>Sp. Def</StatsName>
-                                <Number>{spDef}</Number>
-                                <ButtonStats
-                                    color={colorStats(spDef)}
-                                    width={widthStats(spDef)} />
-                            </DivStats>
-                            <DivStats>
-                                <StatsName>Speed</StatsName>
-                                <Number>{speed}</Number>
-                                <ButtonStats
-                                    color={colorStats(speed)}
-                                    width={widthStats(speed)} />
-                            </DivStats>
+                            <StatRow statName="HP" statValue={health} />
+                            <StatRow statName="Attack" statValue={attack} />
+                            <StatRow statName="Defense" statValue={defense} />
+                            <StatRow statName="Sp. Atk" statValue={spAtk} />
+                            <StatRow statName="Sp. Def" statValue={spDef} />
+                            <StatRow statName="Speed" statValue={speed} />
                             <DivStats>
                                 <StatsName>Total</StatsName>
                                 <Number>{total}</Number>

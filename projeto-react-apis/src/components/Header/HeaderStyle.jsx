@@ -54,7 +54,7 @@ export const BtnHeader = styled.button`
 export const AllPokemons = styled.p`
     font-size: 0.8rem;
     font-weight: 800;
-
+    
 
 @media screen and (min-width: 600px) and (max-width: 992px){
     font-size: 1.2rem;

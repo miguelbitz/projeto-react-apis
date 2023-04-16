@@ -34,6 +34,13 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    const loadPokemonsData = async () => {
+      await getPokemonsUrl()
+    }
+    loadPokemonsData()
+  }, [])
+
   const addToPokedex = (pokemon) => {
     setPokedex([...pokedex, pokemon])
     setPokemons(pokemons.filter(p => p.name !== pokemon.name))
@@ -44,12 +51,7 @@ function App() {
     setPokedex(pokedex.filter(p => p.name !== pokemon.name))
   }
 
-  useEffect(() => {
-    const loadPokemonsData = async () => {
-      await getPokemonsUrl()
-    }
-    loadPokemonsData()
-  }, [])
+  
 
   useEffect(() => {
     if (pokemonsUrl.length > 0) {

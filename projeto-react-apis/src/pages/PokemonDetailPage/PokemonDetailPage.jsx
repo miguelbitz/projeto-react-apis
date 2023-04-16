@@ -68,24 +68,32 @@ export const PokemonDetailPage = (props) => {
 
     const total = health + attack + defense + spAtk + spDef + speed
 
+ /*    const stats = pokemon && pokemon.stats
+        ? pokemon.stats.map((stat) => stat.base_stat)
+        : Array(6).fill('');
+
+    const [health, attack, defense, spAtk, spDef, speed] = stats;
+
+    const total = stats.reduce((acc, statValue) => acc + statValue, 0); */
+
     const colorStats = (value) => {
-        if (value > 0 &&value <= 20) {
+        if (value > 0 && value <= 20) {
             return '#ff0000'
         } else if (value > 20 && value <= 50) {
             return '#ff4800'
         } else if (value > 50 && value <= 80) {
             return '#ffd000'
-        } else if(value > 80){
+        } else if (value > 80) {
             return '#2ca50e'
-        }else{
+        } else {
             return ""
         }
     }
 
-    const widthStats = (value) =>{
-        if(value > 100){
+    const widthStats = (value) => {
+        if (value > 100) {
             return value = 100
-        }else{
+        } else {
             return value
         }
     }
@@ -103,17 +111,17 @@ export const PokemonDetailPage = (props) => {
                 <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
                     <Pictures>
                         <FrontPicContainer>
-                            <FrontPic 
-                            onLoad={() => setLoadImgFront(true)} 
-                            imgLoad ={loadImgFront ? 'block' : 'none'}
-                            src={imageFront?.img} alt="" />
+                            <FrontPic
+                                onLoad={() => setLoadImgFront(true)}
+                                imgLoad={loadImgFront ? 'block' : 'none'}
+                                src={imageFront?.img} alt="" />
                         </FrontPicContainer>
                         <BackPicContainer>
-                            <BackPic 
-                            onLoad={() => setLoadImgBack(true)}
-                            imgLoad ={loadImgBack ? 'block' : 'none'} 
-                            src={imageBack?.img} 
-                            alt="" />
+                            <BackPic
+                                onLoad={() => setLoadImgBack(true)}
+                                imgLoad={loadImgBack ? 'block' : 'none'}
+                                src={imageBack?.img}
+                                alt="" />
                         </BackPicContainer>
                     </Pictures>
                     <ContainerStats>
@@ -186,11 +194,11 @@ export const PokemonDetailPage = (props) => {
                             <h2>Moves</h2>
                         </Moves>
                     </Infos>
-                    <Pokemon 
-                    onLoad={() => setLoadImg(true)} 
-                    imgLoad ={loadImg ? 'block' : 'none'}
-                    src={image?.img} 
-                    alt="" />
+                    <Pokemon
+                        onLoad={() => setLoadImg(true)}
+                        imgLoad={loadImg ? 'block' : 'none'}
+                        src={image?.img}
+                        alt="" />
                     <Pokeball src={pokeball} alt="pokeball" />
                 </ContainerDetail>
             </Container>

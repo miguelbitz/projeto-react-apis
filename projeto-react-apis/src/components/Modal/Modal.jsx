@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalCloseButton, ModalContent, ModalOverlay } from './modalStyle';
+import { ModalCloseButton, ModalContent, ModalOverlay } from './ModalStyle';
 
 export default function Modal({ isOpen, onClose, imageSrc }) {
 

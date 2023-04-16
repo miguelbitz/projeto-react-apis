@@ -1,13 +1,13 @@
-import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, Moves, FrontPicContainer, BackPicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
+import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, MovesContainer, FrontPicContainer, BackPicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
 import pokeball from '../../assets/pngwing 3.png'
 import { getPokemonTypes } from '../../components/PokemonTypes/PokemonTypes'
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
-import axios from "axios";
 import { StatRow } from "../../components/StatRow/StatRow";
 import { useRequestData } from "../../components/hooks/useRequestData";
+import { Moves } from "../../components/Moves/Moves";
 
 export const PokemonDetailPage = (props) => {
 
@@ -15,23 +15,21 @@ export const PokemonDetailPage = (props) => {
     const [imageFront, setImageFront] = useState({ img: "" })
     const [imageBack, setImageBack] = useState({ img: "" })
     const { name } = useParams()
-    const [pokemon, setPokemon] = useState([])
     const [loadImg, setLoadImg] = useState(false)
     const [loadImgFront, setLoadImgFront] = useState(false)
     const [loadImgBack, setLoadImgBack] = useState(false)
-    const [pokemonData, isLoading, error] = useRequestData(
+    const [pokemon, isLoading, error] = useRequestData(
         `${props.BASE_URL}/pokemon/${name}`,
-        {}
-      )
+        []
+    )
 
     useEffect(() => {
-        if (pokemonData && pokemonData.sprites && pokemonData.sprites.other) {
-          setPokemon(pokemonData)
-          setImage({ img: pokemonData.sprites.other['official-artwork'].front_default })
-          setImageFront({ img: pokemonData.sprites.front_default })
-          setImageBack({ img: pokemonData.sprites.back_default })
+        if (pokemon && pokemon.sprites && pokemon.sprites.other) {
+            setImage({ img: pokemon.sprites.other['official-artwork'].front_default })
+            setImageFront({ img: pokemon.sprites.front_default })
+            setImageBack({ img: pokemon.sprites.back_default })
         }
-      }, [pokemonData])
+    }, [pokemon])
 
     const pokemonId = () => {
         if (pokemon) {
@@ -59,6 +57,19 @@ export const PokemonDetailPage = (props) => {
     const speed = getStatValue(pokemon.stats, 5)
 
     const total = health + attack + defense + spAtk + spDef + speed
+
+    const getMoves = (moves, index) => {
+        return pokemon && moves ? moves[index].move.name : ''
+    }
+
+    const move1 = getMoves(pokemon.moves, 0)
+    const move2 = getMoves(pokemon.moves, 1)
+    const move3 = getMoves(pokemon.moves, 2)
+    const move4 = getMoves(pokemon.moves, 3)
+    const move5 = getMoves(pokemon.moves, 4)
+    const move6 = getMoves(pokemon.moves, 5)
+    const move7 = getMoves(pokemon.moves, 6)
+
 
     const isInPokedex = () => {
         const findPokemonBoolean = props.pokedex.find((poke) => {
@@ -147,9 +158,16 @@ export const PokemonDetailPage = (props) => {
                             )) : ''}
                             </TypesContainer>
                         </InfoPokemon>
-                        <Moves>
+                        <MovesContainer>
                             <h2>Moves</h2>
-                        </Moves>
+                            <Moves moveName={move1}/>
+                            <Moves moveName={move2}/>
+                            <Moves moveName={move3}/>
+                            <Moves moveName={move4}/>
+                            <Moves moveName={move5}/>
+                            <Moves moveName={move6}/>
+                            <Moves moveName={move7}/>
+                        </MovesContainer>
                     </Infos>
                     <Pokemon
                         onLoad={() => setLoadImg(true)}

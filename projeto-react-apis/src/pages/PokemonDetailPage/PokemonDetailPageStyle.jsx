@@ -138,13 +138,15 @@ export const Infos = styled.div`
 export const InfoPokemon = styled.div`
   z-index: 3;
 `
-export const Moves = styled.div`
+export const MovesContainer = styled.div`
   background-color: white;
   color: black;
   width: 25rem;
   height: 30rem;
   border-radius: 8px;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 1rem;
@@ -245,14 +247,17 @@ export const Pokemon = styled.img`
   display: ${(props)=>props.imgLoad};
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-    width: 12.063rem;
     height: 12.063rem;
   }
 
-  @media screen and (min-width: 993px){
+  @media screen and (min-width: 993px) and (max-width: 1500px){
     top: -5rem;
-    width: 16rem;
-    height: 16rem;
+    height: 15rem;
+  }
+
+  @media screen and (min-width: 1501px){
+    top: -5rem;
+    height: 20rem;
   }
 `
 

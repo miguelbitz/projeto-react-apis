@@ -27,7 +27,9 @@ export const PokemonCard = (props) => {
     }
 
     const buttonText = props.isInPokedex ? 'Excluir' : 'Capturar!'
+
     const buttonAction = props.isInPokedex ? props.removeFromPokedex : props.addToPokedex
+    
     const color = props.isInPokedex ? '#FF6262' : '#ffffff'
 
     useEffect(() => {

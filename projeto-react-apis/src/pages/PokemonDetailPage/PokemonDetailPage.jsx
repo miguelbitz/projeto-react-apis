@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import axios from "axios";
 import { StatRow } from "../../components/StatRow/StatRow";
+import { useRequestData } from "../../components/hooks/useRequestData";
 
 export const PokemonDetailPage = (props) => {
 
@@ -18,32 +19,19 @@ export const PokemonDetailPage = (props) => {
     const [loadImg, setLoadImg] = useState(false)
     const [loadImgFront, setLoadImgFront] = useState(false)
     const [loadImgBack, setLoadImgBack] = useState(false)
-
-    const loadPokemonData = async (name) => {
-        try {
-            const response = await axios.get(`${props.BASE_URL}/pokemon/${name}`);
-            return response.data;
-        } catch (error) {
-            console.error(error.response);
-        }
-    };
+    const [pokemonData, isLoading, error] = useRequestData(
+        `${props.BASE_URL}/pokemon/${name}`,
+        {}
+      )
 
     useEffect(() => {
-        const getPokemonData = async () => {
-            const pokemonData = await loadPokemonData(name);
-            setPokemon(pokemonData);
-        };
-
-        getPokemonData()
-    }, [name])
-
-    useEffect(() => {
-        if (pokemon && pokemon.sprites && pokemon.sprites.other) {
-            setImage({ img: pokemon.sprites.other["official-artwork"].front_default })
-            setImageFront({ img: pokemon.sprites.front_default })
-            setImageBack({ img: pokemon.sprites.back_default })
+        if (pokemonData && pokemonData.sprites && pokemonData.sprites.other) {
+          setPokemon(pokemonData)
+          setImage({ img: pokemonData.sprites.other['official-artwork'].front_default })
+          setImageFront({ img: pokemonData.sprites.front_default })
+          setImageBack({ img: pokemonData.sprites.back_default })
         }
-    }, [pokemon]);
+      }, [pokemonData])
 
     const pokemonId = () => {
         if (pokemon) {
@@ -60,15 +48,15 @@ export const PokemonDetailPage = (props) => {
     }
 
     const getStatValue = (stats, index) => {
-        return pokemon && stats ? stats[index].base_stat : '';
-    };
+        return pokemon && stats ? stats[index].base_stat : ''
+    }
 
-    const health = getStatValue(pokemon.stats, 0);
-    const attack = getStatValue(pokemon.stats, 1);
-    const defense = getStatValue(pokemon.stats, 2);
-    const spAtk = getStatValue(pokemon.stats, 3);
-    const spDef = getStatValue(pokemon.stats, 4);
-    const speed = getStatValue(pokemon.stats, 5);
+    const health = getStatValue(pokemon.stats, 0)
+    const attack = getStatValue(pokemon.stats, 1)
+    const defense = getStatValue(pokemon.stats, 2)
+    const spAtk = getStatValue(pokemon.stats, 3)
+    const spDef = getStatValue(pokemon.stats, 4)
+    const speed = getStatValue(pokemon.stats, 5)
 
     const total = health + attack + defense + spAtk + spDef + speed
 

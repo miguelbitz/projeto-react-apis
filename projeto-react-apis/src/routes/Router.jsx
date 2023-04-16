@@ -7,12 +7,9 @@ import { PokemonDetailPage } from "../pages/PokemonDetailPage/PokemonDetailPage"
 export default function Router({
     addToPokedex,
     removeFromPokedex,
-    headers,
     pokemons,
     pokedex,
     BASE_URL,
-    AUTH_TOKEN,
-
 }) {
     return (
         <BrowserRouter>
@@ -20,28 +17,22 @@ export default function Router({
                 <Route path="/" element={
                     <PokemonsListPage
                         addToPokedex={addToPokedex}
-                        headers={headers}
                         pokemons={pokemons}
-                        BASE_URL={BASE_URL}
-                        AUTH_TOKEN={AUTH_TOKEN} />}
+                        BASE_URL={BASE_URL}/>}
                 />
                 <Route path="/pokedex" element={
                     <PokedexPage
                         removeFromPokedex={removeFromPokedex}
-                        headers={headers}
                         pokedex={pokedex}
-                        BASE_URL={BASE_URL}
-                        AUTH_TOKEN={AUTH_TOKEN} />}
+                        BASE_URL={BASE_URL}/>}
                 />
                 <Route path="/pokemondetail/:name" element={
                     <PokemonDetailPage
                         addToPokedex={addToPokedex}
                         removeFromPokedex={removeFromPokedex}
-                        headers={headers}
                         pokedex={pokedex}
                         pokemons={pokemons}
-                        BASE_URL={BASE_URL}
-                        AUTH_TOKEN={AUTH_TOKEN} />}
+                        BASE_URL={BASE_URL}/>}
                 />
                 <Route path="*" element={
                     <ErrorPage />}

@@ -68,13 +68,13 @@ export const PokemonDetailPage = (props) => {
 
     const total = health + attack + defense + spAtk + spDef + speed
 
- /*    const stats = pokemon && pokemon.stats
-        ? pokemon.stats.map((stat) => stat.base_stat)
-        : Array(6).fill('');
-
-    const [health, attack, defense, spAtk, spDef, speed] = stats;
-
-    const total = stats.reduce((acc, statValue) => acc + statValue, 0); */
+    /*    const stats = pokemon && pokemon.stats
+           ? pokemon.stats.map((stat) => stat.base_stat)
+           : Array(6).fill('');
+   
+       const [health, attack, defense, spAtk, spDef, speed] = stats;
+   
+       const total = stats.reduce((acc, statValue) => acc + statValue, 0); */
 
     const colorStats = (value) => {
         if (value > 0 && value <= 20) {
@@ -98,9 +98,40 @@ export const PokemonDetailPage = (props) => {
         }
     }
 
+    const isInPokedex = () => {
+        const findPokemonBoolean = props.pokedex.find((poke) => {
+            return poke.name === pokemon.name
+        })
+
+        return !!findPokemonBoolean
+    }
+
+    const handlePokemon = () => {
+        if (!isInPokedex()) {
+            const findPokemon = props.pokemons.find((poke) => {
+                if (poke.name === pokemon.name) {
+                    return poke
+                }
+            })
+            return findPokemon
+        }else{
+            const findPokemon = props.pokedex.find((poke) => {
+                if (poke.name === pokemon.name) {
+                    return poke
+                }
+            })
+            return findPokemon
+        }
+    }
+
     return (
         <div>
-            <Header />
+            <Header
+                isInPokedex={isInPokedex()}
+                handlePokemon={handlePokemon()}
+                addToPokedex={props.addToPokedex}
+                removeFromPokedex={props.removeFromPokedex}
+            />
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <PokeballDetail src={pokeball} alt="pokeball" />
             </div>

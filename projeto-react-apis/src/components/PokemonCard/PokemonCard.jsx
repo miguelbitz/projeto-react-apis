@@ -61,22 +61,23 @@ export const PokemonCard = (props) => {
                     />
                     <CatchButton
                         color={color}
-                        onClick={() => buttonAction({ ...props.pokemon })}>{buttonText}</CatchButton>
+                        onClick={() => buttonAction({ ...props.pokemon })}>{buttonText}
+                    </CatchButton>
                 </div>
                 <Pokeball src={pokeball} alt="pokeball" />
             </Container>
             :
 
             <Container >
-                <div class="dot-spinner">
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
-                    <div class="dot-spinner__dot"></div>
+                <div className="dot-spinner">
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
+                    <div className="dot-spinner__dot"></div>
                 </div>
             </Container>
     )

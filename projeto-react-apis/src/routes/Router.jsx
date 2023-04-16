@@ -35,7 +35,10 @@ export default function Router({
                 />
                 <Route path="/pokemondetail/:name" element={
                     <PokemonDetailPage
+                        addToPokedex={addToPokedex}
+                        removeFromPokedex={removeFromPokedex}
                         headers={headers}
+                        pokedex={pokedex}
                         pokemons={pokemons}
                         BASE_URL={BASE_URL}
                         AUTH_TOKEN={AUTH_TOKEN} />}

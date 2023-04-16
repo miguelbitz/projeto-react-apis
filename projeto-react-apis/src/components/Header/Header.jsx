@@ -1,15 +1,14 @@
 import pokemon from '../../assets/image1.png'
-import { HeaderContainer, Logo, BtnHeader, AllPokemons } from './HeaderStyle'
-import { Link, useLocation} from "react-router-dom";
+import { HeaderContainer, Logo, BtnHeader, AllPokemons, CatchButton } from './HeaderStyle'
+import { Link, useLocation } from "react-router-dom";
 
 export const Header = (props) => {
     const location = useLocation()
 
+    const buttonText = props.isInPokedex ? 'Excluir da pokedex' : 'Capturar!';
+    const buttonAction = props.isInPokedex ? props.removeFromPokedex : props.addToPokedex;
 
-    /* const buttonText = isInPokedex ? 'Excluir da pokedex' : 'Capturar!';
-    const buttonAction = isInPokedex ? props.removeFromPokedex : props.addToPokedex;
-
-    const color = isInPokedex ? '#FF6262' : '#ffffff'; */
+    const color = props.isInPokedex ? '#FF6262' : '#33A4F5'
 
     const pokedexPage = location.pathname === '/pokedex'
     const home = location.pathname === '/'
@@ -64,9 +63,10 @@ export const Header = (props) => {
                         alt='logo' />
 
                     <Link to='/pokedex'>
-                        <BtnHeader>
-                            Pokédex
-                        </BtnHeader>
+                        <CatchButton
+                            color={color}
+                            onClick={() => buttonAction(props.handlePokemon)}>{buttonText}
+                        </CatchButton>
                     </Link>
                 </HeaderContainer>
             )

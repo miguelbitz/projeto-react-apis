@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 import Router from './routes/Router'
+import addImage from './assets/addImage.png'
+import removeImage from './assets/removeImage.png'
+import Modal from './components/Modal/Modal'
 
 
 function App() {
@@ -13,6 +16,8 @@ function App() {
   const [pokemonsUrl, setPokemonsUrl] = useState([])
   const [pokemons, setPokemons] = useState([])
   const [pokedex, setPokedex] = useState([])
+  const [openModal, setOpenModal] = useState(false);
+  const [modalImageSrc, setModalImageSrc] = useState(null);
 
   const getPokemonsUrl = async () => {
     try {
@@ -44,14 +49,16 @@ function App() {
   const addToPokedex = (pokemon) => {
     setPokedex([...pokedex, pokemon])
     setPokemons(pokemons.filter(p => p.name !== pokemon.name))
+    setModalImageSrc(addImage)
+    setOpenModal(true)
   }
 
   const removeFromPokedex = (pokemon) => {
     setPokemons([...pokemons, pokemon])
     setPokedex(pokedex.filter(p => p.name !== pokemon.name))
+    setModalImageSrc(removeImage)
+    setOpenModal(true)
   }
-
-  
 
   useEffect(() => {
     if (pokemonsUrl.length > 0) {
@@ -62,6 +69,10 @@ function App() {
 
   return (
     <div className="App">
+      <Modal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        imageSrc={modalImageSrc} />
       <Router
         addToPokedex={addToPokedex}
         removeFromPokedex={removeFromPokedex}

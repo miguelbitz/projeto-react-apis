@@ -4,6 +4,8 @@ import { Header } from "../../components/Header/Header"
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useContext } from "react"
 import Pagination from "../../components/Pagination/Pagination"
+import { AudioPlayer } from "../../components/AudioPlayer/AudioPlayer"
+
 
 export const PokemonsListPage = () => {
 
@@ -13,12 +15,16 @@ export const PokemonsListPage = () => {
     const firstPostIndex = lastPostIndex - pokemonsPerPage
     const currentPost = pokemons.slice(firstPostIndex, lastPostIndex)
 
+    const audioSrc = '../../../public/pokemon-audio.mp3';
+
     return (
         <div>
             <Header />
+
             <Container>
                 <Title>
                     <h1>Todos Pokémons</h1>
+                    <AudioPlayer src={audioSrc} />
                 </Title>
                 <ContainerListPage>
                     {currentPost

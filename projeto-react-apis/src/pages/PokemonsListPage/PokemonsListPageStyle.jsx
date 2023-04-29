@@ -8,7 +8,8 @@ export const Container = styled.div`
 `
 
 export const Title = styled.div`
-  display: block;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 2.5rem;
 `
@@ -47,3 +48,4 @@ export const PaginationDiv = styled.div`
     align-items: center; 
   }
 `
+

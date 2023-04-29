@@ -15,7 +15,7 @@ export const PokemonsListPage = () => {
     const firstPostIndex = lastPostIndex - pokemonsPerPage
     const currentPost = pokemons.slice(firstPostIndex, lastPostIndex)
 
-    const audioSrc = '../../../public/pokemon-audio.mp3';
+    const audioSrc = '../../../src/assets/pokemon-audio.mp3';
 
     return (
         <div>
@@ -24,7 +24,7 @@ export const PokemonsListPage = () => {
             <Container>
                 <Title>
                     <h1>Todos Pokémons</h1>
-                    <AudioPlayer src={audioSrc} />
+                    <AudioPlayer src={audioSrc} loop/>
                 </Title>
                 <ContainerListPage>
                     {currentPost

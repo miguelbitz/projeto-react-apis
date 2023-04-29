@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalCloseButton, ModalContent, ModalOverlay , ImageModal} from './ModalStyle';
+import {  ModalContent, ModalOverlay , ImageModal} from './ModalStyle';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import { useContext } from 'react';
 
@@ -9,16 +9,14 @@ export default function Modal() {
 
     const onClose = () => setOpenModal(false)
 
+
     if (!openModal) {
         return null;
     }
 
     return (
-        <ModalOverlay>
+        <ModalOverlay onClick={onClose} >
             <ModalContent >
-                <ModalCloseButton onClick={onClose} >
-                    X
-                </ModalCloseButton>
                 <ImageModal src={modalImageSrc} alt="Modal" />
             </ModalContent>
         </ModalOverlay>

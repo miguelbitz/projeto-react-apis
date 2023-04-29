@@ -1,12 +1,14 @@
-import { 
-  PaginationButton, 
-  Button } from "./PaginationStyle"
+import { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { PaginationButton, Button } from "./PaginationStyle"
 
 
-export default function PaginationQuantity({ totalPosts, postsPerPage, currentPage, setCurrentPage }) {
+
+export default function Pagination() {
+  const { totalPokemons, pokemonsPerPage, currentPage, setCurrentPage } = useContext(GlobalContext)
   const pages = [];
 
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalPokemons / pokemonsPerPage); i++) {
     pages.push(i);
   }
 

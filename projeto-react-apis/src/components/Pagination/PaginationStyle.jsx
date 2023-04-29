@@ -9,7 +9,7 @@ export const PaginationButton = styled.div`
     position: absolute;
     margin-top: 1rem;
     button.active{
-        background-color: rgba(228, 13, 124, 0.7);
+        background-color: white;
         
     }
 

@@ -32,3 +32,18 @@ export const ContainerListPage = styled.div`
         grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
   }
 `
+
+export const PaginationDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1rem;
+
+  @media screen and (min-width: 401px) and (max-width: 1300px) {  
+    padding-top: 1rem;
+    }
+
+  @media screen and (max-width: 400px) { 
+    align-items: center; 
+  }
+`

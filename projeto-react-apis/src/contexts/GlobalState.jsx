@@ -16,6 +16,10 @@ export const GlobalState = ({children}) =>{
       `${BASE_URL}/?limit=151`,
       []
     )
+    const [currentPage, setCurrentPage] = useState(1)
+    const [pokemonsPerPage, setPokemonsPerPage] = useState(20)
+
+    const totalPokemons = pokemons.length
   
     const getPokemons = async (urls) => {
       try {
@@ -56,7 +60,11 @@ export const GlobalState = ({children}) =>{
         setOpenModal,
         modalImageSrc,
         addToPokedex,
-        removeFromPokedex
+        removeFromPokedex,
+        currentPage,
+        setCurrentPage,
+        pokemonsPerPage,
+        totalPokemons
     }
 
     return (

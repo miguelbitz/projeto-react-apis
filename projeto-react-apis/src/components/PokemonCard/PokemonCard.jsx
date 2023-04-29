@@ -41,6 +41,11 @@ export const PokemonCard = ({pokemon, isInPokedex}) => {
         setImage({ img: pokemon.sprites.other["official-artwork"].front_default })
     }, [pokemon])
 
+    const handleClick = () => {
+        goToDetail(navigate, pokemon.name)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
     return (
         isLoad ?
             <Container color={getPokemonColors(pokemon.types[0].type.name)}>
@@ -56,7 +61,7 @@ export const PokemonCard = ({pokemon, isInPokedex}) => {
                             />)
                     })}
                     </TypesContainer>
-                    <Detail onClick={() => goToDetail(navigate, pokemon.name)}>Detalhes</Detail>
+                    <Detail onClick={handleClick}>Detalhes</Detail>
                 </div>
                 <div>
                     <Pokemon

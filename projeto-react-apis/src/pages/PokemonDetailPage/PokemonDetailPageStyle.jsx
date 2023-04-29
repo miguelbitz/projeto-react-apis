@@ -44,17 +44,22 @@ export const ContainerDetail = styled.div`
   z-index: 1;
   padding: 1rem 2rem;
 
+  @media screen and (min-width: 600px) and (max-width: 992px){
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    height: 77rem;
+  } 
 
   @media screen and (min-width: 993px){
     grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     height: 40rem;
     column-gap: 20px;
     padding: 1.5rem 1.5rem;
   }
 
  @media screen and (min-width: 1600px){
-  width: 70vw;
+    width: 70vw;
   } 
 `
 
@@ -197,13 +202,15 @@ export const MovesContainer = styled.div`
 
 `
 export const PokeballDetail = styled.img`
-  position: absolute;
-  height: 100vh;
-  margin-left: -14rem;
+  display: none;
 
 
-  @media screen and (min-width: 600px){
+  @media screen and (min-width: 769px){
+    display: block;
+    position: absolute;
+    margin-left: -14rem;
     height: 100%;
+    overflow: hidden;
   }
 `
 export const PokemonNumber = styled.p`

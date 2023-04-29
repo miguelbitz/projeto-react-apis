@@ -1,8 +1,13 @@
 import { Header } from "../../components/Header/Header"
 import { Container, ContainerPokedex, Title } from "./PokedexPageStyle"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
+import { GlobalContext } from "../../contexts/GlobalContext"
+import { useContext } from "react"
 
-export const PokedexPage = (props) => {
+export const PokedexPage = () => {
+
+    const { pokedex } =  useContext(GlobalContext)
+
     return (
         <div>
             <Header/>
@@ -11,7 +16,7 @@ export const PokedexPage = (props) => {
                     <h1>Meus Pokémons</h1>
                 </Title>
                 <ContainerPokedex>
-                    {props.pokedex
+                    {pokedex
                         .sort((a, b) => {
                             return a.id - b.id
                         })
@@ -20,7 +25,6 @@ export const PokedexPage = (props) => {
                                 <PokemonCard
                                     key={index}
                                     pokemon={pokemon}
-                                    removeFromPokedex={props.removeFromPokedex}
                                     isInPokedex={true}
                                 />
                             )

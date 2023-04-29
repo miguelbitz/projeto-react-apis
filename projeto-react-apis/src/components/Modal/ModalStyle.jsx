@@ -16,7 +16,7 @@ export const ModalContent = styled.div`
   position: relative;
   background-color: white;
   border-radius: 4px;
-  padding: 20px;
+
 `
 
 export const ModalCloseButton = styled.button`
@@ -28,4 +28,10 @@ export const ModalCloseButton = styled.button`
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
+`
+
+export const ImageModal = styled.img`
+      @media screen and (max-width: 400px){
+        width: 250px;
+    }
 `

@@ -4,39 +4,15 @@ import { PokemonsListPage } from "../pages/PokemonsListPage/PokemonsListPage";
 import { PokedexPage } from "../pages/PokedexPage/PokedexPage";
 import { PokemonDetailPage } from "../pages/PokemonDetailPage/PokemonDetailPage";
 
-export default function Router({
-    addToPokedex,
-    removeFromPokedex,
-    pokemons,
-    pokedex,
-    BASE_URL,
-}) {
+export default function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={
-                    <PokemonsListPage
-                        addToPokedex={addToPokedex}
-                        pokemons={pokemons}
-                        BASE_URL={BASE_URL}/>}
+                <Route path="/" element={<PokemonsListPage/>}/>
+                <Route path="/pokedex" element={<PokedexPage/>}/>
+                <Route path="/pokemondetail/:name" element={<PokemonDetailPage/>}
                 />
-                <Route path="/pokedex" element={
-                    <PokedexPage
-                        removeFromPokedex={removeFromPokedex}
-                        pokedex={pokedex}
-                        BASE_URL={BASE_URL}/>}
-                />
-                <Route path="/pokemondetail/:name" element={
-                    <PokemonDetailPage
-                        addToPokedex={addToPokedex}
-                        removeFromPokedex={removeFromPokedex}
-                        pokedex={pokedex}
-                        pokemons={pokemons}
-                        BASE_URL={BASE_URL}/>}
-                />
-                <Route path="*" element={
-                    <ErrorPage />}
-                />
+                <Route path="*" element={<ErrorPage />}/>
             </Routes>
         </BrowserRouter>
     )

@@ -1,19 +1,61 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     background-color: white;
     justify-items: center;
     align-items: center;
     height: 8rem;
 
+
     @media screen and (min-width: 600px) and (max-width: 992px){
-        gap: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: white;
+        justify-items: center;
+        align-items: center;
+        height: 8rem;
     }
 
     @media screen and (min-width: 993px){
-        gap: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: white;
+        justify-items: center;
+        align-items: center;
+        height: 8rem;
+    }
+`
+
+export const HeaderContainerDetail = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: white;
+    justify-items: center;
+    align-items: center;
+    height: 10rem;
+    padding: .5rem;
+
+
+    @media screen and (min-width: 600px) and (max-width: 992px){
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: white;
+        justify-items: center;
+        align-items: center;
+        height: 8rem;
+    }
+
+    @media screen and (min-width: 993px){
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: white;
+        justify-items: center;
+        align-items: center;
+        height: 8rem;
     }
 `
 
@@ -77,6 +119,7 @@ export const CatchButton = styled.button`
 export const AllPokemons = styled.p`
     font-size: 0.8rem;
     font-weight: 800;
+
     
 
 @media screen and (min-width: 600px) and (max-width: 992px){

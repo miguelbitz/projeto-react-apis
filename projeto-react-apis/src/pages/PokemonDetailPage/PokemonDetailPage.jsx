@@ -1,4 +1,4 @@
-import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, MovesContainer, FrontPicContainer, BackPicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
+import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, MovesContainer, PicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
 import pokeball from '../../assets/pngwing 3.png'
 import { getPokemonTypes } from '../../components/PokemonTypes/PokemonTypes'
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
@@ -114,19 +114,19 @@ export const PokemonDetailPage = (props) => {
                 </Title>
                 <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
                     <Pictures>
-                        <FrontPicContainer>
+                        <PicContainer>
                             <FrontPic
                                 onLoad={() => setLoadImgFront(true)}
                                 imgLoad={loadImgFront ? 'block' : 'none'}
                                 src={imageFront?.img} alt="" />
-                        </FrontPicContainer>
-                        <BackPicContainer>
+                        </PicContainer>
+                        <PicContainer>
                             <BackPic
                                 onLoad={() => setLoadImgBack(true)}
                                 imgLoad={loadImgBack ? 'block' : 'none'}
                                 src={imageBack?.img}
                                 alt="" />
-                        </BackPicContainer>
+                        </PicContainer>
                     </Pictures>
                     <ContainerStats>
                         <h2>Base Stats</h2>

@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   background-color: #5c5c5d;
   color: white;
-  height: 100vh;
+  height: 100%;
 `
 
 export const Title = styled.div`
@@ -19,8 +19,9 @@ export const ContainerDetail = styled.div`
   background-color: ${(props) => props.color};
   background-size: contain;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 75vh;
+  height: 230vh;
   width: 85vw;
   border-radius: 37px;
   position: relative;
@@ -29,11 +30,14 @@ export const ContainerDetail = styled.div`
   gap: 3.5rem;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
+    flex-direction: row;
+    height: 80vh
 
   }
 
   @media screen and (min-width: 993px){
-
+    flex-direction: row;
+    height: 80vh
   }
 `
 export const Pictures = styled.div`
@@ -42,33 +46,44 @@ export const Pictures = styled.div`
   justify-content: space-evenly;
   gap: 3rem;
 `
-export const FrontPicContainer = styled.div`
+export const PicContainer = styled.div`
   background-color: white;
   color: black;
-  width: 18rem;
-  height: 18rem;
+  width: 10rem;
+  height: 10rem;
+  margin-top: 8rem;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
+
+@media screen and (min-width: 600px) and (max-width: 992px){
+
+}
+
+@media screen and (min-width: 993px) and (max-width: 1500px){
+  margin-top: 0;
+  width: 18rem;
+  height: 18rem;
+}
+
+@media screen and (min-width: 1501px){
+  margin-top: 0;
+  width: 18rem;
+  height: 18rem;
+}
 `
 export const FrontPic = styled.img`
   height: 15rem;
-  display: ${(props)=>props.imgLoad};
+  display: ${(props) => props.imgLoad};
+  z-index: 3;
 `
-export const BackPicContainer = styled.div`
-  background-color: white;
-  color: black;
-  width: 18rem;
-  height: 18rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+
 export const BackPic = styled.img`
   height: 15rem;
-  display: ${(props)=>props.imgLoad};
+  display: ${(props) => props.imgLoad};
+  z-index: 3;
 `
 export const ContainerStats = styled.div`
   background-color: white;
@@ -134,9 +149,39 @@ export const Infos = styled.div`
   flex-direction: column;
   margin-left: 2rem;
   z-index: 3;
+
+  @media screen and (min-width: 600px) and (max-width: 992px){
+
+  }
+
+  @media screen and (min-width: 993px) and (max-width: 1500px){
+  }
+
+  @media screen and (min-width: 1501px){
+
+  }
 `
 export const InfoPokemon = styled.div`
   z-index: 3;
+  position: absolute;
+  top: 1rem;
+  left: 1.3rem;
+
+
+  @media screen and (min-width: 600px) and (max-width: 992px){
+  position: absolute;
+  top: 1rem;
+
+  }
+
+  @media screen and (min-width: 993px) and (max-width: 1500px){
+  position: none;
+  }
+
+  @media screen and (min-width: 1501px){
+  position: none;
+
+  }
 `
 export const MovesContainer = styled.div`
   background-color: white;
@@ -154,16 +199,16 @@ export const MovesContainer = styled.div`
 `
 export const PokeballDetail = styled.img`
   position: absolute;
-  height: 9rem;
+  height: 100vh;
   margin-left: -14rem;
 
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-    height: 12rem;
+    height: 100%;
   }
 
   @media screen and (min-width: 993px){
-    height: 52rem;
+    height: 100%;
   }
 `
 export const PokemonNumber = styled.p`
@@ -227,11 +272,11 @@ export const Pokeball = styled.img`
   position: absolute;
   top: 0;
   right: 0;
-  height: 9rem;
+  height: 13rem;
   z-index: 2;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-    height: 12rem;
+    height: 30rem;
   }
 
   @media screen and (min-width: 993px){
@@ -239,12 +284,12 @@ export const Pokeball = styled.img`
   }
 `
 export const Pokemon = styled.img`
-  height: 8rem;
+  height: 10rem;
   position: absolute;
   top: -3.125rem;
   right: 2rem;
   z-index: 3;
-  display: ${(props)=>props.imgLoad};
+  display: ${(props) => props.imgLoad};
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     height: 12.063rem;

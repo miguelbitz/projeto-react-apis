@@ -1,12 +1,16 @@
 import pokemon from '../../assets/image1.png'
-import { HeaderContainer, Logo, BtnHeader, AllPokemons, CatchButton } from './HeaderStyle'
+import arrow from '../../assets/arrow.png'
+import { HeaderContainer, Logo, BtnHeader, AllPokemons, CatchButton, HeaderContainerDetail } from './HeaderStyle'
 import { Link, useLocation } from "react-router-dom";
+import { useContext } from 'react';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 export const Header = (props) => {
     const location = useLocation()
+    const { addToPokedex, removeFromPokedex } = useContext(GlobalContext)
 
     const buttonText = props.isInPokedex ? 'Excluir da pokedex' : 'Capturar!';
-    const buttonAction = props.isInPokedex ? props.removeFromPokedex : props.addToPokedex;
+    const buttonAction = props.isInPokedex ? removeFromPokedex : addToPokedex;
 
     const color = props.isInPokedex ? '#FF6262' : '#33A4F5'
 
@@ -20,7 +24,7 @@ export const Header = (props) => {
                 <HeaderContainer>
                     <Link to='/' className='nav-link'>
                         <AllPokemons>
-                            Todos Pokemons
+                            <img src={arrow} alt='arrow' /> <span><u>Todos Pokemons</u></span>
                         </AllPokemons>
                     </Link>
 
@@ -33,9 +37,7 @@ export const Header = (props) => {
             return (
                 <HeaderContainer>
                     <Link to='/' className='nav-link'>
-                        <AllPokemons>
-                            Todos Pokemons
-                        </AllPokemons>
+
                     </Link>
 
                     <Logo
@@ -51,10 +53,10 @@ export const Header = (props) => {
             )
         } else if (detailPage) {
             return (
-                <HeaderContainer>
+                <HeaderContainerDetail>
                     <Link to='/' className='nav-link'>
                         <AllPokemons>
-                            Todos Pokemons
+                            <img src={arrow} alt='arrow' /> <span><u>Todos Pokemons</u></span>
                         </AllPokemons>
                     </Link>
 
@@ -68,7 +70,7 @@ export const Header = (props) => {
                             onClick={() => buttonAction(props.handlePokemon)}>{buttonText}
                         </CatchButton>
                     </Link>
-                </HeaderContainer>
+                </HeaderContainerDetail>
             )
         }
     }

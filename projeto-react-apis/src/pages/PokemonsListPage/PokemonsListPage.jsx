@@ -8,8 +8,6 @@ export const PokemonsListPage = () => {
 
     const {pokemons} = useContext(GlobalContext)
 
-    console.log(pokemons)
-
     return (
         <div>
             <Header />

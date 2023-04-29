@@ -4,16 +4,16 @@ import axios from 'axios'
 import addImage from '../assets/addImage.png'
 import removeImage from '../assets/removeImage.png'
 import { GlobalContext } from './GlobalContext'
+import { BASE_URL } from '../constants/url'
 
 export const GlobalState = ({children}) =>{
-    const BASE_URL = "https://pokeapi.co/api/v2"
 
     const [pokemons, setPokemons] = useState([])
     const [pokedex, setPokedex] = useState([])
     const [openModal, setOpenModal] = useState(false);
     const [modalImageSrc, setModalImageSrc] = useState(null);
     const [pokemonsData, isLoading, error] = useRequestData(
-      `${BASE_URL}/pokemon/?limit=151`,
+      `${BASE_URL}/?limit=151`,
       []
     )
   
@@ -54,7 +54,9 @@ export const GlobalState = ({children}) =>{
         setPokedex,
         openModal,
         setOpenModal,
-        modalImageSrc
+        modalImageSrc,
+        addToPokedex,
+        removeFromPokedex
     }
 
     return (

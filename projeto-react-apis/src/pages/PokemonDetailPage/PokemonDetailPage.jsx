@@ -9,10 +9,11 @@ import { StatRow } from "../../components/StatRow/StatRow";
 import { useRequestData } from "../../components/hooks/useRequestData";
 import { Moves } from "../../components/Moves/Moves";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import { BASE_URL } from '../../constants/url'
 
 export const PokemonDetailPage = () => {
 
-    const {addToPokedex, removeFromPokedex, pokedex, pokemons, BASE_URL} = useContext(GlobalContext)
+    const {addToPokedex, removeFromPokedex, pokedex, pokemons} = useContext(GlobalContext)
 
     const [image, setImage] = useState({ img: "" })
     const [imageFront, setImageFront] = useState({ img: "" })
@@ -22,7 +23,7 @@ export const PokemonDetailPage = () => {
     const [loadImgFront, setLoadImgFront] = useState(false)
     const [loadImgBack, setLoadImgBack] = useState(false)
     const [pokemon, isLoading, error] = useRequestData(
-        `${BASE_URL}/pokemon/${name}`,
+        `${BASE_URL}/${name}`,
         []
     )
 
@@ -44,8 +45,8 @@ export const PokemonDetailPage = () => {
         }
     }
 
-    const pokemonName = (name) => {
-        return name.charAt(0).toUpperCase() + name.slice(1)
+    const firstLetterUppercase = (word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1)
     }
 
     const getStatValue = (stats, index) => {
@@ -65,13 +66,11 @@ export const PokemonDetailPage = () => {
         return pokemon && moves ? moves[index].move.name : ''
     }
 
-    const move1 = getMoves(pokemon.moves, 0)
-    const move2 = getMoves(pokemon.moves, 1)
-    const move3 = getMoves(pokemon.moves, 2)
-    const move4 = getMoves(pokemon.moves, 3)
-    const move5 = getMoves(pokemon.moves, 4)
-    const move6 = getMoves(pokemon.moves, 5)
-    const move7 = getMoves(pokemon.moves, 6)
+    const move1 = firstLetterUppercase(getMoves(pokemon.moves, 0))
+    const move2 = firstLetterUppercase(getMoves(pokemon.moves, 1))
+    const move3 = firstLetterUppercase(getMoves(pokemon.moves, 2))
+    const move4 = firstLetterUppercase(getMoves(pokemon.moves, 3))
+    const move5 = firstLetterUppercase(getMoves(pokemon.moves, 4))
 
 
     const isInPokedex = () => {
@@ -105,8 +104,6 @@ export const PokemonDetailPage = () => {
             <Header
                 isInPokedex={isInPokedex()}
                 handlePokemon={handlePokemon()}
-                addToPokedex={addToPokedex}
-                removeFromPokedex={removeFromPokedex}
             />
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <PokeballDetail src={pokeball} alt="pokeball" />
@@ -151,7 +148,7 @@ export const PokemonDetailPage = () => {
                     <Infos>
                         <InfoPokemon>
                             <PokemonNumber>{pokemonId()}</PokemonNumber>
-                            <PokemonName>{pokemon && pokemon.name ? pokemonName(pokemon.name) : ''}</PokemonName>
+                            <PokemonName>{pokemon && pokemon.name ? firstLetterUppercase(pokemon.name) : ''}</PokemonName>
                             <TypesContainer>{pokemon && pokemon.types ? pokemon.types.map((typeObj, index) => (
                                 <PokemonType
                                     key={index}
@@ -168,8 +165,6 @@ export const PokemonDetailPage = () => {
                             <Moves moveName={move3}/>
                             <Moves moveName={move4}/>
                             <Moves moveName={move5}/>
-                            <Moves moveName={move6}/>
-                            <Moves moveName={move7}/>
                         </MovesContainer>
                     </Infos>
                     <Pokemon

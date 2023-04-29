@@ -163,23 +163,19 @@ export const Infos = styled.div`
 `
 export const InfoPokemon = styled.div`
   z-index: 3;
-  position: absolute;
   top: 1rem;
   left: 1.3rem;
 
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-  position: absolute;
   top: 1rem;
 
   }
 
   @media screen and (min-width: 993px) and (max-width: 1500px){
-  position: none;
   }
 
   @media screen and (min-width: 1501px){
-  position: none;
 
   }
 `

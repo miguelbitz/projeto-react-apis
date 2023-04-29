@@ -1,8 +1,15 @@
 import { Container, ContainerListPage, Title } from "./PokemonsListPageStyle"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 import { Header } from "../../components/Header/Header"
+import { GlobalContext } from "../../contexts/GlobalContext"
+import { useContext } from "react"
 
-export const PokemonsListPage = (props) => {
+export const PokemonsListPage = () => {
+
+    const {pokemons} = useContext(GlobalContext)
+
+    console.log(pokemons)
+
     return (
         <div>
             <Header />
@@ -11,7 +18,7 @@ export const PokemonsListPage = (props) => {
                     <h1>Todos Pokémons</h1>
                 </Title>
                 <ContainerListPage>
-                    {props.pokemons
+                    {pokemons
                     .sort((a,b) =>{
                         return a.id - b.id
                     })
@@ -20,7 +27,6 @@ export const PokemonsListPage = (props) => {
                             <PokemonCard
                                 key={index}
                                 pokemon={pokemon}
-                                addToPokedex={props.addToPokedex}
                                 isInPokedex={false}
                             />
                         )

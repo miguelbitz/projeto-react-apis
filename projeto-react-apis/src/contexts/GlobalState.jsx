@@ -1,18 +1,13 @@
-import React from 'react'
+import { useRequestData } from '../components/hooks/useRequestData'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import './App.css'
-import Router from './routes/Router'
-import addImage from './assets/addImage.png'
-import removeImage from './assets/removeImage.png'
-import Modal from './components/Modal/Modal'
-import { useRequestData } from './components/hooks/useRequestData'
-import { GlobalState } from './contexts/GlobalState'
+import addImage from '../assets/addImage.png'
+import removeImage from '../assets/removeImage.png'
+import { GlobalContext } from './GlobalContext'
 
+export const GlobalState = ({children}) =>{
+    const BASE_URL = "https://pokeapi.co/api/v2"
 
-function App() {
-  /*   const BASE_URL = "https://pokeapi.co/api/v2"
-  
     const [pokemons, setPokemons] = useState([])
     const [pokedex, setPokedex] = useState([])
     const [openModal, setOpenModal] = useState(false);
@@ -50,16 +45,22 @@ function App() {
       setPokedex(pokedex.filter(p => p.name !== pokemon.name))
       setModalImageSrc(removeImage)
       setOpenModal(true)
-    } */
+    }
 
-  return (
-    <div className="App">
-      <GlobalState>
-        <Modal />
-        <Router/>
-      </GlobalState>
-    </div>
-  )
+    const context = {
+        pokemons,
+        setPokemons,
+        pokedex,
+        setPokedex,
+        openModal,
+        setOpenModal,
+        modalImageSrc
+    }
+
+    return (
+        <GlobalContext.Provider value={context}>
+            {children}
+        </GlobalContext.Provider>
+);
+
 }
-
-export default App

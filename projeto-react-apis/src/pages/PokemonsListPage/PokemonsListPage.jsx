@@ -15,7 +15,7 @@ export const PokemonsListPage = () => {
     const firstPostIndex = lastPostIndex - pokemonsPerPage
     const currentPost = pokemons.slice(firstPostIndex, lastPostIndex)
 
-    const audioSrc = '../../../src/assets/pokemon-audio.mp3';
+    const audioSrc = '../../../public/pokemon-audio.mp3';
 
     return (
         <div>

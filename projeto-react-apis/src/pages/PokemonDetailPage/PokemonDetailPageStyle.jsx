@@ -274,16 +274,19 @@ export const Pokemon = styled.img`
   height: 10rem;
   position: absolute;
   top: -5.125rem;
+  
   z-index: 3;
   display: ${(props) => props.imgLoad};
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px) and (max-width: 1134px){
     height: 12.063rem;
+
   }
 
-  @media screen and (min-width: 993px){
+  @media screen and (min-width: 1135px){
     top: -7rem;
     height: 15rem;
+    right: 10px;
   }
 
 

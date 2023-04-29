@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div`
     background-color: white;
     justify-items: center;
     align-items: center;
-    height: 8rem;
+    height: 9rem;
 
 
     @media screen and (min-width: 600px) and (max-width: 992px){

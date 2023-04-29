@@ -1,4 +1,4 @@
-import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pictures, Pokeball, PokeballDetail, Stats, Infos, InfoPokemon, MovesContainer, PicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
+import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pokeball, PokeballDetail, Stats, InfoPokemon, MovesContainer, PicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
 import pokeball from '../../assets/pngwing 3.png'
 import { getPokemonTypes } from '../../components/PokemonTypes/PokemonTypes'
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
@@ -13,7 +13,7 @@ import { BASE_URL } from '../../constants/url'
 
 export const PokemonDetailPage = () => {
 
-    const {addToPokedex, removeFromPokedex, pokedex, pokemons} = useContext(GlobalContext)
+    const { addToPokedex, removeFromPokedex, pokedex, pokemons } = useContext(GlobalContext)
 
     const [image, setImage] = useState({ img: "" })
     const [imageFront, setImageFront] = useState({ img: "" })
@@ -113,22 +113,22 @@ export const PokemonDetailPage = () => {
                     <h1>Detalhes</h1>
                 </Title>
                 <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
-                    <Pictures>
-                        <PicContainer>
+
+                        <PicContainer id="pic-front">
                             <FrontPic
                                 onLoad={() => setLoadImgFront(true)}
                                 imgLoad={loadImgFront ? 'block' : 'none'}
                                 src={imageFront?.img} alt="" />
                         </PicContainer>
-                        <PicContainer>
+                        <PicContainer id="pic-back">
                             <BackPic
                                 onLoad={() => setLoadImgBack(true)}
                                 imgLoad={loadImgBack ? 'block' : 'none'}
                                 src={imageBack?.img}
                                 alt="" />
                         </PicContainer>
-                    </Pictures>
-                    <ContainerStats>
+
+                    <ContainerStats id="stats">
                         <h2>Base Stats</h2>
                         <Stats>
                             <StatRow statName="HP" statValue={health} />
@@ -140,13 +140,12 @@ export const PokemonDetailPage = () => {
                             <DivStats>
                                 <StatsName>Total</StatsName>
                                 <Number>{total}</Number>
-                                <ButtonStatsTotal />
                             </DivStats>
                         </Stats>
 
                     </ContainerStats>
-                    <Infos>
-                        <InfoPokemon>
+
+                        <InfoPokemon id="info-pokemon">
                             <PokemonNumber>{pokemonId()}</PokemonNumber>
                             <PokemonName>{pokemon && pokemon.name ? firstLetterUppercase(pokemon.name) : ''}</PokemonName>
                             <TypesContainer>{pokemon && pokemon.types ? pokemon.types.map((typeObj, index) => (
@@ -158,20 +157,22 @@ export const PokemonDetailPage = () => {
                             )) : ''}
                             </TypesContainer>
                         </InfoPokemon>
-                        <MovesContainer>
+                        <MovesContainer id="moves">
                             <h2>Moves</h2>
-                            <Moves moveName={move1}/>
-                            <Moves moveName={move2}/>
-                            <Moves moveName={move3}/>
-                            <Moves moveName={move4}/>
-                            <Moves moveName={move5}/>
+                            <Moves moveName={move1} />
+                            <Moves moveName={move2} />
+                            <Moves moveName={move3} />
+                            <Moves moveName={move4} />
+                            <Moves moveName={move5} />
                         </MovesContainer>
-                    </Infos>
+
                     <Pokemon
+                        id="pokemon-img"
                         onLoad={() => setLoadImg(true)}
                         imgLoad={loadImg ? 'block' : 'none'}
                         src={image?.img}
                         alt="" />
+
                     <Pokeball src={pokeball} alt="pokeball" />
                 </ContainerDetail>
             </Container>

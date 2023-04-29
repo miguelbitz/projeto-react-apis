@@ -36,8 +36,7 @@ export const Header = (props) => {
         } else if (home) {
             return (
                 <HeaderContainer>
-                    <Link to='/' className='nav-link'>
-
+                    <Link>
                     </Link>
 
                     <Logo

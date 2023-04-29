@@ -5,12 +5,20 @@ export const StatsName = styled.p`
   justify-self: end;
   font-weight: 400;
   font-size: 13px;
+
+  @media screen and (min-width: 1366px){
+    font-size: 18px
+  }
 `
 
 export const Number = styled.div`
   justify-self: end;
   font-weight: 600;
   font-size: 14px;
+  
+  @media screen and (min-width: 1366px){
+    font-size: 18px
+  }
 `
 
 export const DivStats = styled.div`

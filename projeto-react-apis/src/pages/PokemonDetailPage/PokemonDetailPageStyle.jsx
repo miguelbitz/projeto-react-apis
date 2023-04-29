@@ -19,11 +19,11 @@ export const Title = styled.div`
 
   }
 
-  @media screen and (min-width: 993px) and (max-width: 1366px){
+  @media screen and (min-width: 993px) and (max-width: 1365px){
     padding-left: 8.5rem;
   }
 
-  @media screen and (min-width: 1367px){
+  @media screen and (min-width: 1366px){
     padding-left: 8.5rem;
   }
 `
@@ -45,26 +45,17 @@ export const ContainerDetail = styled.div`
   padding: 1rem 2rem;
 
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
-    flex-direction: row;
-    height: 70vh
-
+  @media screen and (min-width: 993px){
+    grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+    height: 40rem;
+    column-gap: 20px;
+    padding: 1.5rem 1.5rem;
   }
 
-  @media screen and (min-width: 993px) and (max-width: 1366px){
-    //display: flex;
-    align-items: center;
-    flex-direction: row;
-    height: 95vh
-  }
-
-  @media screen and (min-width: 1367px){
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    height: 80vh;
-    gap: 3.5rem;
-  }
+ @media screen and (min-width: 1600px){
+  width: 70vw;
+  } 
 `
 
 export const PicContainer = styled.div`
@@ -79,21 +70,16 @@ export const PicContainer = styled.div`
   align-items: center;
   z-index: 3;
 
-@media screen and (min-width: 600px) and (max-width: 992px){
-
+@media screen and (min-width: 993px) and (max-width: 1365px){
+    margin-top: 0;
+    width: 15rem;
+    height: 15rem;
 }
 
-@media screen and (min-width: 993px) and (max-width: 1366px){
+@media screen and (min-width: 1366px){
   margin-top: 0;
-  width: 18rem;
-  height: 18rem;
-}
-
-@media screen and (min-width: 1367px){
-  margin-top: 0;
-  width: 18rem;
-  height: 18rem;
-  margin-top: 8rem;
+  width: 16rem;
+  height: 16rem;
 }
 `
 export const FrontPic = styled.img`
@@ -122,14 +108,13 @@ export const ContainerStats = styled.div`
   gap: 1rem;
   z-index: 3;
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
-
+  @media screen and (min-width: 993px) and (max-width: 1365px){
+    height: 100%;
+    width: 17rem;
   }
 
-  @media screen and (min-width: 993px) and (max-width: 1366px){
-  }
-
-  @media screen and (min-width: 1367px){
+  @media screen and (min-width: 1366px){
+    height: 100%;
     width: 25rem;
   }
 `
@@ -183,19 +168,12 @@ export const InfoPokemon = styled.div`
   position: relative;
   z-index: 3;
   
-
-
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px){
   top: 1rem;
-
   }
 
-  @media screen and (min-width: 993px) and (max-width: 1366px){
-  }
-
-  @media screen and (min-width: 1367px){
-    top: 1rem;
-  left: 1.3rem;
+  @media screen and (min-width: 1366px){
+    width: 15rem;
   }
 `
 export const MovesContainer = styled.div`
@@ -212,6 +190,11 @@ export const MovesContainer = styled.div`
   padding: 1rem;
   z-index: 3;
 
+  @media screen and (min-width: 993px){
+    height: 100%;
+  }
+
+
 `
 export const PokeballDetail = styled.img`
   position: absolute;
@@ -219,18 +202,9 @@ export const PokeballDetail = styled.img`
   margin-left: -14rem;
 
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px){
     height: 100%;
   }
-
-  @media screen and (min-width: 993px) and (max-width: 1366px){
-    height: 100%;
-  }
-
-  @media screen and (min-width: 1367px){
-    height: 100%;
-    width: 25rem;
-}
 `
 export const PokemonNumber = styled.p`
   font-size: 13px;
@@ -238,11 +212,7 @@ export const PokemonNumber = styled.p`
   font-weight: 600;
   text-align: left;
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
-    font-size: 1rem;
-  }
-
-  @media screen and (min-width: 993px){
+  @media screen and (min-width: 600px){
     font-size: 1rem;
   }
 `
@@ -253,12 +223,12 @@ export const PokemonName = styled.h1`
   text-align: left;
   margin-bottom: 10px;
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px) and (max-width: 1365px){
     font-size: 2rem;
   }
 
-  @media screen and (min-width: 993px){
-    font-size: 2rem;
+  @media screen and (min-width: 1366px){
+    font-size: 3rem;
   }
 `
 export const PokemonType = styled.img`
@@ -268,25 +238,21 @@ export const PokemonType = styled.img`
   border: 1px dashed #ffffff;
   margin-right: 8px;
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px) and (max-width: 1365px){
     max-width: 6.25rem;
     height: 1.8rem;
   } 
 
-  @media screen and (min-width: 993px){
-    max-width: 6.25rem;
-    height: 1.8rem;
+  @media screen and (min-width: 1366px){
+
+    height: 2.2rem;
   }
+
 `
 export const TypesContainer = styled.div`
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px){
     margin-bottom: 3.25rem;
-  }
-
-  @media screen and (min-width: 993px){
-    margin-bottom: 3.25rem;
-
   }
 `
 export const Pokeball = styled.img`
@@ -315,14 +281,10 @@ export const Pokemon = styled.img`
     height: 12.063rem;
   }
 
-  @media screen and (min-width: 993px) and (max-width: 1366px){
-    top: -5rem;
+  @media screen and (min-width: 993px){
+    top: -7rem;
     height: 15rem;
   }
 
-  @media screen and (min-width: 1367px){
-    top: -5rem;
-    height: 20rem;
-    right: 2rem;
-  }
+
 `

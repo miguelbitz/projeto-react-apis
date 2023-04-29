@@ -9,7 +9,6 @@ export const PokemonsListPage = () => {
 
     const { pokemons, currentPage, pokemonsPerPage } = useContext(GlobalContext)
 
-    console.log(pokemons)
     const lastPostIndex = currentPage * pokemonsPerPage
     const firstPostIndex = lastPostIndex - pokemonsPerPage
     const currentPost = pokemons.slice(firstPostIndex, lastPostIndex)

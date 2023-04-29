@@ -37,7 +37,7 @@ export const PaginationDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding-top: 2rem;
+  padding: 1rem;
 
   @media screen and (min-width: 401px) and (max-width: 1300px) {  
     padding-top: 1rem;

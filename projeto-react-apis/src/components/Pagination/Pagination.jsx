@@ -12,12 +12,17 @@ export default function Pagination() {
     pages.push(i);
   }
 
+  const handleClick = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <PaginationButton>
       {pages.map((page, index) => {
         return <Button
         key={index} 
-        onClick={() => setCurrentPage(page)}
+        onClick={() => handleClick(page)}
         className={page === currentPage ? 'active' : ''}>{page}</Button>
       })
       }

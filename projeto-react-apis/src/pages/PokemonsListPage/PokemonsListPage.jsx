@@ -24,7 +24,8 @@ export const PokemonsListPage = () => {
             <Container>
                 <Title>
                     <h1>Todos Pokémons</h1>
-                    <AudioPlayer src={audioSrc} loop/>
+                    {/* <AudioPlayer src={audioSrc} loop/> */}
+                    <audio controls src={audioSrc} loop> </audio>
                 </Title>
                 <ContainerListPage>
                     {currentPost

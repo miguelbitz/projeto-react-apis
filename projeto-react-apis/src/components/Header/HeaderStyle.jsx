@@ -38,6 +38,29 @@ export const BtnHeader = styled.button`
     border: none;
     color: white;
     font-size: 1rem;
+    cursor: pointer;
+
+@media screen and (min-width: 600px) and (max-width: 992px){
+    width: 25vw;
+    height: 8vw;
+}
+
+@media screen and (min-width: 993px){
+    width: 14vw;
+    height: 3.2vw;
+    font-size: 1.2rem;
+}
+`
+
+export const CatchButton = styled.button`
+    width: 30vw;
+    height: 10vw;
+    border-radius: 8px;
+    background-color: ${(props) => props.color};
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
 
 @media screen and (min-width: 600px) and (max-width: 992px){
     width: 25vw;
@@ -54,7 +77,7 @@ export const BtnHeader = styled.button`
 export const AllPokemons = styled.p`
     font-size: 0.8rem;
     font-weight: 800;
-
+    
 
 @media screen and (min-width: 600px) and (max-width: 992px){
     font-size: 1.2rem;

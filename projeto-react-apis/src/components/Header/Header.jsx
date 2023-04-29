@@ -1,17 +1,14 @@
 import pokemon from '../../assets/image1.png'
-import { HeaderContainer, Logo, BtnHeader, AllPokemons } from './HeaderStyle'
-import { useLocation, useNavigate } from "react-router-dom";
-import { goToHome, goToPokedex } from '../../routes/coordinator';
+import { HeaderContainer, Logo, BtnHeader, AllPokemons, CatchButton } from './HeaderStyle'
+import { Link, useLocation } from "react-router-dom";
 
 export const Header = (props) => {
-    const navigate = useNavigate()
     const location = useLocation()
 
+    const buttonText = props.isInPokedex ? 'Excluir da pokedex' : 'Capturar!';
+    const buttonAction = props.isInPokedex ? props.removeFromPokedex : props.addToPokedex;
 
-    /* const buttonText = isInPokedex ? 'Excluir da pokedex' : 'Capturar!';
-    const buttonAction = isInPokedex ? props.removeFromPokedex : props.addToPokedex;
-
-    const color = isInPokedex ? '#FF6262' : '#ffffff'; */
+    const color = props.isInPokedex ? '#FF6262' : '#33A4F5'
 
     const pokedexPage = location.pathname === '/pokedex'
     const home = location.pathname === '/'
@@ -21,8 +18,11 @@ export const Header = (props) => {
         if (pokedexPage) {
             return (
                 <HeaderContainer>
-                    <AllPokemons
-                        onClick={() => goToHome(navigate)}>Todos Pokemons</AllPokemons>
+                    <Link to='/' className='nav-link'>
+                        <AllPokemons>
+                            Todos Pokemons
+                        </AllPokemons>
+                    </Link>
 
                     <Logo
                         src={pokemon}
@@ -32,36 +32,48 @@ export const Header = (props) => {
         } else if (home) {
             return (
                 <HeaderContainer>
-                    <AllPokemons
-                        onClick={() => goToHome(navigate)}>Todos Pokemons</AllPokemons>
+                    <Link to='/' className='nav-link'>
+                        <AllPokemons>
+                            Todos Pokemons
+                        </AllPokemons>
+                    </Link>
 
                     <Logo
                         src={pokemon}
                         alt='logo' />
 
-                    <BtnHeader
-                        onClick={() => goToPokedex(navigate)}>Pokédex</BtnHeader>
+                    <Link to='/pokedex'>
+                        <BtnHeader>
+                            Pokédex
+                        </BtnHeader>
+                    </Link>
                 </HeaderContainer>
             )
         } else if (detailPage) {
             return (
                 <HeaderContainer>
-                    <AllPokemons
-                        onClick={() => goToHome(navigate)}>Todos Pokemons</AllPokemons>
+                    <Link to='/' className='nav-link'>
+                        <AllPokemons>
+                            Todos Pokemons
+                        </AllPokemons>
+                    </Link>
 
                     <Logo
                         src={pokemon}
                         alt='logo' />
 
-
-                    <BtnHeader
-                        onClick={() => goToPokedex(navigate)}>Pokédex</BtnHeader>
+                    <Link to='/pokedex'>
+                        <CatchButton
+                            color={color}
+                            onClick={() => buttonAction(props.handlePokemon)}>{buttonText}
+                        </CatchButton>
+                    </Link>
                 </HeaderContainer>
             )
         }
     }
 
-return (
-    changePage()
-)
+    return (
+        changePage()
+    )
 }

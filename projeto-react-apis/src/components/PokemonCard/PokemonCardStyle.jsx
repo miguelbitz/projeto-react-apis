@@ -105,6 +105,7 @@ export const Pokeball = styled.img`
 export const Detail = styled.p`
   text-decoration: underline;
   font-size: 14px;
+  cursor: pointer;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     font-size: 1rem;

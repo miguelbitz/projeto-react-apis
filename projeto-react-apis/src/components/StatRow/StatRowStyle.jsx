@@ -4,11 +4,13 @@ export const StatsName = styled.p`
   grid-column: 1 / span 2;
   justify-self: end;
   font-weight: 400;
+  font-size: 13px;
 `
 
 export const Number = styled.div`
   justify-self: end;
   font-weight: 600;
+  font-size: 14px;
 `
 
 export const DivStats = styled.div`

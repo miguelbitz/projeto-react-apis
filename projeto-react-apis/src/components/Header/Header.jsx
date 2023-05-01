@@ -21,6 +21,10 @@ export const Header = (props) => {
         }
     }
 
+    const handleRefresh = () => {
+        window.location.reload();
+      };
+
     const color = props.isInPokedex ? '#FF6262' : '#33A4F5'
 
     const pokedexPage = location.pathname === '/pokedex'
@@ -43,7 +47,7 @@ export const Header = (props) => {
         } else if (home) {
             return (
                 <HeaderContainer>
-                    <Logo className='logo' src={pokemon} alt='logo' />
+                    <Logo onClick={handleRefresh} className='logo' src={pokemon} alt='logo' />
 
                     <Link to='/pokedex' className='btn-pokedex'>
                         <BtnHeader >

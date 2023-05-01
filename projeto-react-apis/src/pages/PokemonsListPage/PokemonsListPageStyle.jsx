@@ -7,26 +7,29 @@ export const Container = styled.div`
   color: white;
 `
 
-export const Title = styled.div`
+export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 2.5rem;
 `
 
+export const Title = styled.h1`
+  font-weight: 900;
+`
+
 export const ContainerListPage = styled.div`
     background-color: #5c5c5d;
-    background-size: contain;
     height: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;;
-    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    align-items: center;
 
-    @media screen and (min-width: 600px){
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    @media screen and (min-width: 401px){  
+      justify-items: center;
     }
+    
 `
 
 export const PaginationDiv = styled.div`
@@ -37,7 +40,7 @@ export const PaginationDiv = styled.div`
 
   @media screen and (min-width: 401px) and (max-width: 1300px) {  
     padding-top: 1rem;
-    }
+  }
 
   @media screen and (max-width: 400px) { 
     align-items: center; 

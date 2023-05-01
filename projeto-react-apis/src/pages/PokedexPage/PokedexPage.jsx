@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header/Header"
-import { Container, ContainerPokedex, Title } from "./PokedexPageStyle"
+import { Container, ContainerPokedex, Title, TitleContainer } from "./PokedexPageStyle"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useContext } from "react"
@@ -12,9 +12,9 @@ export const PokedexPage = () => {
         <div>
             <Header/>
             <Container>
-                <Title>
-                    <h1>Meus Pokémons</h1>
-                </Title>
+                <TitleContainer>
+                    <Title>Meus Pokémons</Title>
+                </TitleContainer>
                 <ContainerPokedex>
                     {pokedex
                         .sort((a, b) => {

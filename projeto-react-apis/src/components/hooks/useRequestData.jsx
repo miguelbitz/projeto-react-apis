@@ -4,7 +4,7 @@ import axios from "axios";
 export const useRequestData = (url, initialState) => {
     const [data, setData] = useState(initialState);
     const [isLoading, setIsLoading] = useState(false)
-    const [error, setIsError] = useState(false)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         setIsLoading(true)
@@ -16,7 +16,7 @@ export const useRequestData = (url, initialState) => {
             })
             .catch((error) => {
                 setIsLoading(false)
-                setIsError(false)
+                setError(false)
                 console.log(error.response.data);
             });
     }, [url]);

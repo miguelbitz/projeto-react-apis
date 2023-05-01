@@ -25,6 +25,7 @@ export const PokemonNumber = styled.p`
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   text-align: left;
+  margin: 0;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     font-size: 1rem;
@@ -43,11 +44,11 @@ export const PokemonName = styled.h1`
   margin-bottom: 10px;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   @media screen and (min-width: 993px){
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 `
 

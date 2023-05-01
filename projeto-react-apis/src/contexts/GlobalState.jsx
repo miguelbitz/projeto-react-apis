@@ -70,9 +70,7 @@ export const GlobalState = ({ children }) => {
     setCurrentPage,
     pokemonsPerPage,
     totalPokemons,
-    isLoading,
-    error,
-    pokemonsData
+    isLoading
   }
 
   return (

@@ -3,26 +3,21 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 1rem;
   width: 17rem;
-  max-height: 13.125rem;
+  max-height: 9.125rem;
   background-color: ${(props) => props.color};
   border-radius: 12px;
   display: flex;
   position: relative;
-  margin: 3.125rem;
+  margin: 2.3rem;
   color: #ffffff;
 
-  @media screen and (min-width: 600px) and (max-width: 992px){
+  @media screen and (min-width: 600px){
     min-width: 25rem;
     max-width: 27.5rem;
     max-height: 13.125rem;
+    margin: 3.125rem;
   }
 
-  @media screen and (min-width: 993px){
-    min-width: 25rem;
-    max-width: 27.5rem;
-    max-height: 13.125rem;
-
-  }
 `
 
 export const PokemonNumber = styled.p`
@@ -106,13 +101,16 @@ export const Detail = styled.p`
   text-decoration: underline;
   font-size: 14px;
   cursor: pointer;
+  margin-top: 1.2rem;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     font-size: 1rem;
+    margin-top: none;
   }
 
   @media screen and (min-width: 993px){
     font-size: 1.2rem;
+    margin-top: none;
   }
 `
 

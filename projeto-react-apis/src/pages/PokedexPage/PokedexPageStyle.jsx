@@ -18,17 +18,14 @@ export const ContainerPokedex = styled.div`
     background-size: contain;
     height: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;;
-    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    justify-content: center;
 
-    @media screen and (min-width: 600px) and (max-width: 992px){
+    @media screen and (min-width: 600px){
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
     }
 
-    @media screen and (min-width: 993px){
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
-  }
 `

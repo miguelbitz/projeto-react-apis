@@ -1,6 +1,6 @@
 import pokemon from '../../assets/image1.png'
 import arrow from '../../assets/arrow.png'
-import { HeaderContainer, Logo, BtnHeader, AllPokemons, CatchButton, HeaderContainerDetail } from './HeaderStyle'
+import { HeaderContainer, Logo, BtnHeader, AllPokemons, CatchButton, Arrow } from './HeaderStyle'
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
@@ -9,8 +9,17 @@ export const Header = (props) => {
     const location = useLocation()
     const { addToPokedex, removeFromPokedex } = useContext(GlobalContext)
 
-    const buttonText = props.isInPokedex ? 'Excluir da pokedex' : 'Capturar!';
+    const buttonText = props.isInPokedex ? 'Excluir da pokédex' : 'Capturar!';
     const buttonAction = props.isInPokedex ? removeFromPokedex : addToPokedex;
+    const buttonBackPage = props.isInPokedex ? "Pokédex" : "Todos Pokémons"
+
+    const handlePage = () => {
+        if (props.isInPokedex) {
+            return '/pokedex'
+        } else {
+            return '/'
+        }
+    }
 
     const color = props.isInPokedex ? '#FF6262' : '#33A4F5'
 
@@ -22,29 +31,22 @@ export const Header = (props) => {
         if (pokedexPage) {
             return (
                 <HeaderContainer>
-                    <Link to='/' className='nav-link'>
-                        <AllPokemons>
-                            <img src={arrow} alt='arrow' /> <span><u>Todos Pokemons</u></span>
+                    <Link to='/' className='nav-link, all-pokemons'>
+                        <AllPokemons >
+                            <img src={arrow} alt='arrow' /> <span><u>{buttonBackPage}</u></span>
                         </AllPokemons>
                     </Link>
 
-                    <Logo
-                        src={pokemon}
-                        alt='logo' />
+                    <Logo className='logo' src={pokemon} alt='logo' />
                 </HeaderContainer>
             )
         } else if (home) {
             return (
                 <HeaderContainer>
-                    <Link>
-                    </Link>
+                    <Logo className='logo' src={pokemon} alt='logo' />
 
-                    <Logo
-                        src={pokemon}
-                        alt='logo' />
-
-                    <Link to='/pokedex'>
-                        <BtnHeader>
+                    <Link to='/pokedex' className='btn-pokedex'>
+                        <BtnHeader >
                             Pokédex
                         </BtnHeader>
                     </Link>
@@ -52,24 +54,22 @@ export const Header = (props) => {
             )
         } else if (detailPage) {
             return (
-                <HeaderContainerDetail>
-                    <Link to='/' className='nav-link'>
-                        <AllPokemons>
-                            <img src={arrow} alt='arrow' /> <span><u>Todos Pokemons</u></span>
+                <HeaderContainer>
+                    <Link to={handlePage()} className='nav-link, all-pokemons-detail'>
+                        <AllPokemons >
+                            <Arrow src={arrow} alt='arrow' /> <span><u>{buttonBackPage}</u></span>
                         </AllPokemons>
                     </Link>
 
-                    <Logo
-                        src={pokemon}
-                        alt='logo' />
+                    <Logo className='logo-detail' src={pokemon} alt='logo' />
 
-                    <Link to='/pokedex'>
+                    <Link to={handlePage()} className='btn-header'>
                         <CatchButton
                             color={color}
                             onClick={() => buttonAction(props.handlePokemon)}>{buttonText}
                         </CatchButton>
                     </Link>
-                </HeaderContainerDetail>
+                </HeaderContainer>
             )
         }
     }

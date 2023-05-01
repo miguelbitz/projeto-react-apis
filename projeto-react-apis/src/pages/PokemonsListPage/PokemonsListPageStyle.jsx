@@ -23,15 +23,10 @@ export const ContainerListPage = styled.div`
     flex-wrap: wrap;;
     justify-items: center;
 
-    @media screen and (min-width: 600px) and (max-width: 992px){
+    @media screen and (min-width: 600px){
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
     }
-
-    @media screen and (min-width: 993px){
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
-  }
 `
 
 export const PaginationDiv = styled.div`

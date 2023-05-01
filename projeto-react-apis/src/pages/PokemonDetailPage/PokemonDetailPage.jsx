@@ -13,7 +13,7 @@ import { BASE_URL } from '../../constants/url'
 
 export const PokemonDetailPage = () => {
 
-    const { addToPokedex, removeFromPokedex, pokedex, pokemons } = useContext(GlobalContext)
+    const { pokedex, pokemons } = useContext(GlobalContext)
 
     const [image, setImage] = useState({ img: "" })
     const [imageFront, setImageFront] = useState({ img: "" })

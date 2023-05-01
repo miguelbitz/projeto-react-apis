@@ -47,3 +47,16 @@ export const PaginationDiv = styled.div`
   }
 `
 
+export const Loading = styled.img`
+  width: 100%;
+`
+
+export const LoadingPage = styled.div`
+  background-color: #222538;
+  width: 99vw;
+  height: 99vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`
+

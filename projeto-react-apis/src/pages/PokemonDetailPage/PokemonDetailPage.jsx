@@ -102,6 +102,7 @@ export const PokemonDetailPage = () => {
     return (
         <div>
             <Header
+                key={isInPokedex}
                 isInPokedex={isInPokedex()}
                 handlePokemon={handlePokemon()}
             />
@@ -114,19 +115,19 @@ export const PokemonDetailPage = () => {
                 </Title>
                 <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
 
-                        <PicContainer id="pic-front">
-                            <FrontPic
-                                onLoad={() => setLoadImgFront(true)}
-                                imgLoad={loadImgFront ? 'block' : 'none'}
-                                src={imageFront?.img} alt="" />
-                        </PicContainer>
-                        <PicContainer id="pic-back">
-                            <BackPic
-                                onLoad={() => setLoadImgBack(true)}
-                                imgLoad={loadImgBack ? 'block' : 'none'}
-                                src={imageBack?.img}
-                                alt="" />
-                        </PicContainer>
+                    <PicContainer id="pic-front">
+                        <FrontPic
+                            onLoad={() => setLoadImgFront(true)}
+                            imgLoad={loadImgFront ? 'block' : 'none'}
+                            src={imageFront?.img} alt="" />
+                    </PicContainer>
+                    <PicContainer id="pic-back">
+                        <BackPic
+                            onLoad={() => setLoadImgBack(true)}
+                            imgLoad={loadImgBack ? 'block' : 'none'}
+                            src={imageBack?.img}
+                            alt="" />
+                    </PicContainer>
 
                     <ContainerStats id="stats">
                         <h2>Base Stats</h2>
@@ -145,26 +146,26 @@ export const PokemonDetailPage = () => {
 
                     </ContainerStats>
 
-                        <InfoPokemon id="info-pokemon">
-                            <PokemonNumber>{pokemonId()}</PokemonNumber>
-                            <PokemonName>{pokemon && pokemon.name ? firstLetterUppercase(pokemon.name) : ''}</PokemonName>
-                            <TypesContainer>{pokemon && pokemon.types ? pokemon.types.map((typeObj, index) => (
-                                <PokemonType
-                                    key={index}
-                                    src={getPokemonTypes(typeObj.type.name)}
-                                    alt=''
-                                />
-                            )) : ''}
-                            </TypesContainer>
-                        </InfoPokemon>
-                        <MovesContainer id="moves">
-                            <h2>Moves</h2>
-                            <Moves moveName={move1} />
-                            <Moves moveName={move2} />
-                            <Moves moveName={move3} />
-                            <Moves moveName={move4} />
-                            <Moves moveName={move5} />
-                        </MovesContainer>
+                    <InfoPokemon id="info-pokemon">
+                        <PokemonNumber>{pokemonId()}</PokemonNumber>
+                        <PokemonName>{pokemon && pokemon.name ? firstLetterUppercase(pokemon.name) : ''}</PokemonName>
+                        <TypesContainer>{pokemon && pokemon.types ? pokemon.types.map((typeObj, index) => (
+                            <PokemonType
+                                key={index}
+                                src={getPokemonTypes(typeObj.type.name)}
+                                alt=''
+                            />
+                        )) : ''}
+                        </TypesContainer>
+                    </InfoPokemon>
+                    <MovesContainer id="moves">
+                        <h2>Moves</h2>
+                        <Moves moveName={move1} />
+                        <Moves moveName={move2} />
+                        <Moves moveName={move3} />
+                        <Moves moveName={move4} />
+                        <Moves moveName={move5} />
+                    </MovesContainer>
 
                     <Pokemon
                         id="pokemon-img"

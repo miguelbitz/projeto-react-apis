@@ -13,7 +13,7 @@ export const GlobalState = ({ children }) => {
   const [openModal, setOpenModal] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState(null);
   const [pokemonsData, isLoading, error] = useRequestData(
-    `${BASE_URL}/?limit=151`,
+    `${BASE_URL}/?limit=386`,
     []
   )
   const [currentPage, setCurrentPage] = useState(1)
@@ -69,7 +69,10 @@ export const GlobalState = ({ children }) => {
     currentPage,
     setCurrentPage,
     pokemonsPerPage,
-    totalPokemons
+    totalPokemons,
+    isLoading,
+    error,
+    pokemonsData
   }
 
   return (

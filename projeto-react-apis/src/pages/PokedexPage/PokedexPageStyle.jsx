@@ -7,10 +7,14 @@ export const Container = styled.div`
   color: white;
 `
 
-export const Title = styled.div`
+export const TitleContainer = styled.div`
   display: block;
   width: 100%;
   padding: 2.5rem;
+`
+
+export const Title = styled.h1`
+  font-weight: 900;
 `
 
 export const ContainerPokedex = styled.div`

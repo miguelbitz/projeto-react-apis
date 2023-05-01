@@ -1,4 +1,4 @@
-import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pokeball, PokeballDetail, Stats, InfoPokemon, MovesContainer, PicContainer, ContainerStats, ButtonStatsTotal, DivStats, StatsName, Number } from "./PokemonDetailPageStyle"
+import { Container, ContainerDetail, Title, PokemonNumber, PokemonName, TypesContainer, PokemonType, Pokemon, FrontPic, BackPic, Pokeball, PokeballDetail, Stats, InfoPokemon, MovesContainer, PicContainer, ContainerStats, DivStats, StatsName, Number, TitleContainer, Subtitle, Loading } from "./PokemonDetailPageStyle"
 import pokeball from '../../assets/pngwing 3.png'
 import { getPokemonTypes } from '../../components/PokemonTypes/PokemonTypes'
 import { getPokemonColors } from '../../components/PokemonColors/PokemonColors'
@@ -10,6 +10,7 @@ import { useRequestData } from "../../components/hooks/useRequestData";
 import { Moves } from "../../components/Moves/Moves";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { BASE_URL } from '../../constants/url'
+import loadingGif from '../../assets/loading-gif.gif'
 
 export const PokemonDetailPage = () => {
 
@@ -110,72 +111,75 @@ export const PokemonDetailPage = () => {
                 <PokeballDetail src={pokeball} alt="pokeball" />
             </div>
             <Container>
-                <Title>
-                    <h1>Detalhes</h1>
-                </Title>
-                <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
+                <TitleContainer>
+                    <Title>Detalhes</Title>
+                </TitleContainer>
+                {isLoading
+                    ?
+                    <Loading src={loadingGif} alt="Loading" />
+                    :
+                    <ContainerDetail color={pokemon && pokemon.types ? getPokemonColors(pokemon.types[0].type.name) : ''}>
+                        <PicContainer id="pic-front">
+                            <FrontPic
+                                onLoad={() => setLoadImgFront(true)}
+                                imgLoad={loadImgFront ? 'block' : 'none'}
+                                src={imageFront?.img} alt="" />
+                        </PicContainer>
+                        <PicContainer id="pic-back">
+                            <BackPic
+                                onLoad={() => setLoadImgBack(true)}
+                                imgLoad={loadImgBack ? 'block' : 'none'}
+                                src={imageBack?.img}
+                                alt="" />
+                        </PicContainer>
 
-                    <PicContainer id="pic-front">
-                        <FrontPic
-                            onLoad={() => setLoadImgFront(true)}
-                            imgLoad={loadImgFront ? 'block' : 'none'}
-                            src={imageFront?.img} alt="" />
-                    </PicContainer>
-                    <PicContainer id="pic-back">
-                        <BackPic
-                            onLoad={() => setLoadImgBack(true)}
-                            imgLoad={loadImgBack ? 'block' : 'none'}
-                            src={imageBack?.img}
+                        <ContainerStats id="stats">
+                            <Subtitle>Base Stats</Subtitle>
+                            <Stats>
+                                <StatRow statName="HP" statValue={health} />
+                                <StatRow statName="Attack" statValue={attack} />
+                                <StatRow statName="Defense" statValue={defense} />
+                                <StatRow statName="Sp. Atk" statValue={spAtk} />
+                                <StatRow statName="Sp. Def" statValue={spDef} />
+                                <StatRow statName="Speed" statValue={speed} />
+                                <DivStats>
+                                    <StatsName>Total</StatsName>
+                                    <Number>{total}</Number>
+                                </DivStats>
+                            </Stats>
+
+                        </ContainerStats>
+
+                        <InfoPokemon id="info-pokemon">
+                            <PokemonNumber>{pokemonId()}</PokemonNumber>
+                            <PokemonName>{pokemon && pokemon.name ? firstLetterUppercase(pokemon.name) : ''}</PokemonName>
+                            <TypesContainer>{pokemon && pokemon.types ? pokemon.types.map((typeObj, index) => (
+                                <PokemonType
+                                    key={index}
+                                    src={getPokemonTypes(typeObj.type.name)}
+                                    alt=''
+                                />
+                            )) : ''}
+                            </TypesContainer>
+                        </InfoPokemon>
+                        <MovesContainer id="moves">
+                            <Subtitle>Moves</Subtitle>
+                            <Moves moveName={move1} />
+                            <Moves moveName={move2} />
+                            <Moves moveName={move3} />
+                            <Moves moveName={move4} />
+                            <Moves moveName={move5} />
+                        </MovesContainer>
+
+                        <Pokemon
+                            id="pokemon-img"
+                            onLoad={() => setLoadImg(true)}
+                            imgLoad={loadImg ? 'block' : 'none'}
+                            src={image?.img}
                             alt="" />
-                    </PicContainer>
 
-                    <ContainerStats id="stats">
-                        <h2>Base Stats</h2>
-                        <Stats>
-                            <StatRow statName="HP" statValue={health} />
-                            <StatRow statName="Attack" statValue={attack} />
-                            <StatRow statName="Defense" statValue={defense} />
-                            <StatRow statName="Sp. Atk" statValue={spAtk} />
-                            <StatRow statName="Sp. Def" statValue={spDef} />
-                            <StatRow statName="Speed" statValue={speed} />
-                            <DivStats>
-                                <StatsName>Total</StatsName>
-                                <Number>{total}</Number>
-                            </DivStats>
-                        </Stats>
-
-                    </ContainerStats>
-
-                    <InfoPokemon id="info-pokemon">
-                        <PokemonNumber>{pokemonId()}</PokemonNumber>
-                        <PokemonName>{pokemon && pokemon.name ? firstLetterUppercase(pokemon.name) : ''}</PokemonName>
-                        <TypesContainer>{pokemon && pokemon.types ? pokemon.types.map((typeObj, index) => (
-                            <PokemonType
-                                key={index}
-                                src={getPokemonTypes(typeObj.type.name)}
-                                alt=''
-                            />
-                        )) : ''}
-                        </TypesContainer>
-                    </InfoPokemon>
-                    <MovesContainer id="moves">
-                        <h2>Moves</h2>
-                        <Moves moveName={move1} />
-                        <Moves moveName={move2} />
-                        <Moves moveName={move3} />
-                        <Moves moveName={move4} />
-                        <Moves moveName={move5} />
-                    </MovesContainer>
-
-                    <Pokemon
-                        id="pokemon-img"
-                        onLoad={() => setLoadImg(true)}
-                        imgLoad={loadImg ? 'block' : 'none'}
-                        src={image?.img}
-                        alt="" />
-
-                    <Pokeball src={pokeball} alt="pokeball" />
-                </ContainerDetail>
+                        <Pokeball src={pokeball} alt="pokeball" />
+                    </ContainerDetail>}
             </Container>
         </div >
     )

@@ -7,9 +7,11 @@ export const Container = styled.div`
   background-color: #5c5c5d;
   color: white;
   height: 100%;
+  min-height: 100vh;
+  flex-grow: 1;
 `
 
-export const Title = styled.div`
+export const TitleContainer = styled.div`
   width: 100%;
   padding: 2.5rem;
   padding-left: 2rem;
@@ -28,6 +30,11 @@ export const Title = styled.div`
   }
 `
 
+export const Title = styled.h1`
+  font-weight: 900;
+  
+`
+
 export const ContainerDetail = styled.div`
   background-color: ${(props) => props.color};
   background-size: contain;
@@ -37,12 +44,13 @@ export const ContainerDetail = styled.div`
   row-gap: 20px;
   justify-items: center;
   align-items: center;
-  height: 85rem;
+  height: 68rem;
   width: 85vw;
   border-radius: 37px;
   position: relative;
   z-index: 1;
   padding: 1rem 2rem;
+  margin-bottom: 2rem;
 
   @media screen and (min-width: 600px) and (max-width: 992px){
     grid-template-columns: repeat(2, 1fr);
@@ -54,12 +62,11 @@ export const ContainerDetail = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     height: 40rem;
-    column-gap: 20px;
-    padding: 1.5rem 1.5rem;
+    column-gap: 20px; 
   }
 
  @media screen and (min-width: 1600px){
-    width: 70vw;
+    max-width: 70vw;
   } 
 `
 
@@ -124,7 +131,7 @@ export const ContainerStats = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   padding: 1rem;
   gap: 1rem;
   z-index: 3;
@@ -143,10 +150,11 @@ export const ContainerStats = styled.div`
 export const Stats = styled.div`
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  justify-content: center;
+  gap: 1rem;
   width: 100%;
   margin-left: -1rem;
-  padding: 1rem;
+
 `
 export const ButtonStats = styled.button`
   background-color: ${(props) => props.color};
@@ -165,25 +173,41 @@ export const ButtonStatsTotal = styled.button`
   border: none;
   grid-column: 4 / span 5
 `
+export const Subtitle = styled.h2`
+  font-weight: 900;
+  align-self: flex-start;
+`
 
-export const StatsName = styled.p`
+export const StatsName = styled.div`
   grid-column: 1 / span 2;
   justify-self: end;
   font-weight: 400;
+  font-size: 13px;
+
+  @media screen and (min-width: 1366px){
+    font-size: 19px
+  }
 `
 
 export const Number = styled.div`
-  justify-self: end;
+  justify-self: center;
   font-weight: 600;
+  font-size: 13px;
+  
+  @media screen and (min-width: 1366px){
+    font-size: 18px
+  }
+  margin: 0;
 `
 
 export const DivStats = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
-  gap: .5rem;
   align-items: center;
-  padding-left: 1rem;
+  margin-left: 1.5rem;
+  column-gap: 5px;
+  row-gap: 10px;
 `
 
 export const InfoPokemon = styled.div`
@@ -226,7 +250,7 @@ export const PokeballDetail = styled.img`
     display: block;
     position: absolute;
     margin-left: -14rem;
-    height: 100%;
+    height: 80%;
     overflow: hidden;
   }
 `
@@ -248,11 +272,11 @@ export const PokemonName = styled.h1`
   margin-bottom: 10px;
 
   @media screen and (min-width: 600px) and (max-width: 1365px){
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   @media screen and (min-width: 1366px){
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `
 export const PokemonType = styled.img`
@@ -313,5 +337,7 @@ export const Pokemon = styled.img`
     right: 10px;
   }
 
-
+`
+export const Loading = styled.img`
+  height: 300px;
 `

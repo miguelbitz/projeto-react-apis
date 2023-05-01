@@ -1,9 +1,9 @@
-import { Container, ContainerListPage, PaginationDiv, Title } from "./PokemonsListPageStyle"
+import { Container, ContainerListPage, PaginationDiv, Title, TitleContainer } from "./PokemonsListPageStyle"
 import { PokemonCard } from "../../components/PokemonCard/PokemonCard"
 import { Header } from "../../components/Header/Header"
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useContext } from "react"
-import Pagination from "../../components/Pagination/Pagination"
+import CustomPagination from "../../components/Pagination/Pagination"
 
 
 
@@ -20,9 +20,9 @@ export const PokemonsListPage = () => {
             <Header />
 
             <Container>
-                <Title>
-                    <h1>Todos Pokémons</h1>
-                </Title>
+                <TitleContainer>
+                    <Title>Todos Pokémons</Title>
+                </TitleContainer>
                 <ContainerListPage>
                     {currentPost
                         .sort((a, b) => {
@@ -39,7 +39,7 @@ export const PokemonsListPage = () => {
                         })}
                 </ContainerListPage>
                 <PaginationDiv>
-                    <Pagination />
+                    <CustomPagination />
                 </PaginationDiv>
             </Container>
         </div>

@@ -14,7 +14,7 @@ export const StatsName = styled.p`
 export const Number = styled.div`
   justify-self: end;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   
   @media screen and (min-width: 1366px){
     font-size: 18px
@@ -25,13 +25,13 @@ export const DivStats = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
-  gap: .5rem;
   align-items: center;
+  margin-left: 1.5rem
 `
 
 export const ButtonStats = styled.button`
   background-color: ${(props) => props.color};
-  height: 1rem;
+  height: 14px;
   width: ${(props) => props.width}%;
   border: none;
   border-radius: 10px;

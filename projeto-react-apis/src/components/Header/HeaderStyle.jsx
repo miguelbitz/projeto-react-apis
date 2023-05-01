@@ -1,80 +1,39 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: white;
-    justify-items: center;
-    align-items: center;
-    height: 9rem;
-
-
-    @media screen and (min-width: 600px) and (max-width: 992px){
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        background-color: white;
-        justify-items: center;
-        align-items: center;
-        height: 8rem;
-    }
-
-    @media screen and (min-width: 993px){
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        background-color: white;
-        justify-items: center;
-        align-items: center;
-        height: 8rem;
-    }
-`
-
-export const HeaderContainerDetail = styled.div`
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 1rem;
     background-color: white;
     justify-items: center;
     align-items: center;
     height: 10rem;
-    padding: .5rem;
+    padding: 1rem;
 
-
-    @media screen and (min-width: 600px) and (max-width: 992px){
-        display: grid;
+    @media screen and (min-width: 501px){
         grid-template-columns: repeat(3, 1fr);
-        background-color: white;
-        justify-items: center;
-        align-items: center;
+        grid-template-rows: 1fr;
         height: 8rem;
-    }
-
-    @media screen and (min-width: 993px){
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        background-color: white;
-        justify-items: center;
-        align-items: center;
-        height: 8rem;
+        padding: 1rem;
     }
 `
 
-
 export const Logo = styled.img`
-    width: 40vw;
+    width: 10rem;
 
     @media screen and (min-width: 600px) and (max-width: 992px){
-        width: 30vw;
+        width: 20vw;
     }
 
     @media screen and (min-width: 993px){
-        width: 15vw;
+        width: 15rem;
     }
 `
 
 export const BtnHeader = styled.button`
-    width: 30vw;
-    height: 10vw;
+    width: 7rem;
+    height: 3rem;
     border-radius: 8px;
     background-color: #33A4F5;
     border: none;
@@ -83,8 +42,8 @@ export const BtnHeader = styled.button`
     cursor: pointer;
 
 @media screen and (min-width: 600px) and (max-width: 992px){
-    width: 25vw;
-    height: 8vw;
+    width: 20vw;
+    height: 6vw;
 }
 
 @media screen and (min-width: 993px){
@@ -96,37 +55,47 @@ export const BtnHeader = styled.button`
 
 export const CatchButton = styled.button`
     width: 30vw;
-    height: 10vw;
+    height: 6vh;
     border-radius: 8px;
     background-color: ${(props) => props.color};
     border: none;
     color: white;
-    font-size: 1rem;
+    font-size: 13px;
     cursor: pointer;
 
 @media screen and (min-width: 600px) and (max-width: 992px){
-    width: 25vw;
-    height: 8vw;
+    width: 20vw;
+    height: 5vw;
+    font-size: 1rem;
 }
 
 @media screen and (min-width: 993px){
-    width: 14vw;
-    height: 3.2vw;
+    width: 16vw;
+    height: 4vw;
     font-size: 1.2rem;
 }
 `
 
-export const AllPokemons = styled.p`
+export const AllPokemons = styled.div`
     font-size: 0.8rem;
     font-weight: 800;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 
-    
+    @media screen and (min-width: 600px) and (max-width: 992px){
+        font-size: 1.2rem;
+    }
 
-@media screen and (min-width: 600px) and (max-width: 992px){
-    font-size: 1.2rem;
-}
+    @media screen and (min-width: 993px){
+        font-size: 1.4rem;
+    }
+`
 
-@media screen and (min-width: 993px){
-    font-size: 1.4rem;
-}
+export const Arrow = styled.img`
+    height: .7rem;
+
+    @media screen and (min-width: 992px){
+        height: 1rem;
+    }
 `

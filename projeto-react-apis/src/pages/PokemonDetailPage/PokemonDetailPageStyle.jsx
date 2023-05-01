@@ -33,7 +33,7 @@ export const ContainerDetail = styled.div`
   background-size: contain;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   row-gap: 20px;
   justify-items: center;
   align-items: center;
@@ -67,18 +67,18 @@ export const PicContainer = styled.div`
   position: relative;
   background-color: white;
   color: black;
-  width: 10rem;
-  height: 10rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 3;
 
-@media screen and (min-width: 993px) and (max-width: 1365px){
+@media screen and (min-width: 992px) and (max-width: 1365px){
     margin-top: 0;
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 13rem;
 }
 
 @media screen and (min-width: 1366px){
@@ -88,15 +88,31 @@ export const PicContainer = styled.div`
 }
 `
 export const FrontPic = styled.img`
-  height: 12rem;
+  height: 8rem;
   display: ${(props) => props.imgLoad};
   z-index: 3;
+
+  @media screen and (min-width: 992px) and (max-width: 1365px){
+    height: 10rem;
+  }
+
+  @media screen and (min-width: 1366px){
+    height: 13rem;
+  }
 `
 
 export const BackPic = styled.img`
-  height: 12rem;
+  height: 8rem;
   display: ${(props) => props.imgLoad};
   z-index: 3;
+
+  @media screen and (min-width: 992px) and (max-width: 1365px){
+    height: 10rem;
+  }
+
+  @media screen and (min-width: 1366px){
+    height: 13rem;
+  }
 `
 export const ContainerStats = styled.div`
   position: relative;
@@ -167,6 +183,7 @@ export const DivStats = styled.div`
   grid-template-rows: auto;
   gap: .5rem;
   align-items: center;
+  padding-left: 1rem;
 `
 
 export const InfoPokemon = styled.div`
